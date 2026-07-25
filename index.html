@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Viralaya | Modern Clothing</title>
+    <title>Viralaya | Professional Workwear & Scrubs</title>
     <meta name="description"
-        content="Viralaya offers contemporary clothing designed for comfort, confidence, and everyday style." />
+        content="Viralaya offers premium medical uniforms, scrubs, and workwear designed for comfort, durability, and professional appearance during long shifts." />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+    <div class="background-blur blur-one"></div>
+    <div class="background-blur blur-two"></div>
+
     <header class="topbar">
         <a class="brand" href="#">Viralaya</a>
         <nav class="nav-links" aria-label="Primary navigation">
@@ -23,89 +26,371 @@
 
     <main>
         <section class="hero">
-            <div class="hero-content">
-                <p class="eyebrow">New Season • 2026</p>
-                <h1>Elevate your everyday look.</h1>
+            <div class="hero-copy reveal">
+                <p class="eyebrow">Professional Workwear • 2026</p>
+                <h1>Comfort that lasts through every shift.</h1>
                 <p>
-                    Discover statement essentials crafted for comfort, confidence, and effortless style.
+                    Premium medical uniforms and scrubs engineered for healthcare professionals who demand performance, comfort, and lasting quality.
                 </p>
                 <div class="hero-actions">
-                    <a class="button primary" href="#shop">Shop new arrivals</a>
+                    <a class="button primary" href="#shop">Shop New Arrivals</a>
                     <a class="button secondary" href="#about">Why Viralaya</a>
                 </div>
+                <div class="hero-highlights">
+                    <div class="mini-card">
+                        <strong>Antimicrobial</strong>
+                        <span>fabric technology</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-card">
-                <p class="eyebrow">Editor’s pick</p>
-                <h2>Signature layers for every mood</h2>
-                <p>Lightweight tailoring, elevated basics, and polished outerwear in one curated drop.</p>
+
+            <div class="hero-visual reveal">
+                <div class="visual-card featured-card">
+                    <p class="eyebrow">Editor’s pick</p>
+                    <h2>Performance Scrub Collection</h2>
+                    <p>Moisture-wicking, stain-resistant, and designed for all-day comfort during demanding shifts.</p>
+                </div>
+                <div class="visual-card accent-card">
+                    <p>Trusted by doctors, nurses, and medical professionals nationwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="showcase reveal">
+            <div class="section-heading">
+                <p class="eyebrow">Engineered for Professionals</p>
+                <h2>Workwear that performs as hard as you do.</h2>
+            </div>
+            <div class="showcase-grid">
+                <article class="showcase-card">
+                    <h3>All-Day Comfort</h3>
+                    <p>Breathable fabrics with 4-way stretch that move with you through every procedure and patient interaction.</p>
+                </article>
+                <article class="showcase-card">
+                    <h3>Professional Appearance</h3>
+                    <p>Tailored fits that maintain a polished look from first patient to last chart check.</p>
+                </article>
+                <article class="showcase-card">
+                    <h3>Durability & Protection</h3>
+                    <p>Antimicrobial finishes and stain-resistant treatments that withstand repeated washing.</p>
+                </article>
             </div>
         </section>
 
         <section id="shop" class="products">
-            <div class="section-heading">
-                <p class="eyebrow">Featured pieces</p>
-                <h2>Fresh styles for the modern wardrobe</h2>
+            <div class="section-heading reveal">
+                <p class="eyebrow">Featured Collections</p>
+                <h2>Premium scrubs and workwear for healthcare heroes</h2>
             </div>
             <div class="product-grid">
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80"
-                        alt="Model wearing a relaxed jacket" />
+                <article class="product-card reveal">
+                    <div class="product-actions">
+                        <button class="btn-quickview" aria-label="Quick view">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <button class="btn-wishlist" aria-label="Add to wishlist">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                        <button class="btn-share" aria-label="Share product">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 16.08c-1.22 0-2.26.86-2.55 2.02h-1.88L7 14.2l-.38-.38L3 14.76l-.38.38v-.03c.32-1.16 1.2-2.08 2.34-2.08h1.38l2.72-2.72.38-.38.38.38L16 12l1.88 1.88c.29.3.29.77 0 1.06l-1.88 1.88-.38.38-.38-.38-2.72-2.72H11c-1.14 0-2.06.92-2.34 2.08v.03l-.38.38-.38-.38-4.24 4.24-.38.38v.03c-.32 1.16.8 2.08 2.06 2.08h1.38l2.72 2.72.38.38.38-.38L18 16.08z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1582719478250-8916315f864b?auto=format&fit=crop&w=800&q=80"
+                        alt="Healthcare professional wearing blue scrub top and pants" />
                     <div class="product-info">
-                        <p class="product-tag">Outerwear</p>
-                        <h3>Contour Jacket</h3>
-                        <p>Structured comfort with a modern silhouette.</p>
-                        <span>$128</span>
+                        <p class="product-tag">Performance Scrubs</p>
+                        <h3>Core Flex Scrub Top</h3>
+                        <p>Moisture-wicking fabric with 4-way stretch and antimicrobial finish.</p>
+                        <span>$34.99</span>
                     </div>
                 </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
-                        alt="Minimalist outfit with a knit top" />
+                <article class="product-card reveal">
+                    <div class="product-actions">
+                        <button class="btn-quickview" aria-label="Quick view">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <button class="btn-wishlist" aria-label="Add to wishlist">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                        <button class="btn-share" aria-label="Share product">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 16.08c-1.22 0-2.26.86-2.55 2.02h-1.88L7 14.2l-.38-.38L3 14.76l-.38.38v-.03c.32-1.16 1.2-2.08 2.34-2.08h1.38l2.72-2.72.38-.38.38.38L16 12l1.88 1.88c.29.3.29.77 0 1.06l-1.88 1.88-.38.38-.38-.38-2.72-2.72H11c-1.14 0-2.06.92-2.34 2.08v.03l-.38.38-.38-.38-4.24 4.24-.38.38v.03c-.32 1.16.8 2.08 2.06 2.08h1.38l2.72 2.72.38.38.38-.38L18 16.08z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1581091887319-5c8d5a7ec6b1?auto=format&fit=crop&w=800&q=80"
+                        alt="Close-up of scrub pants with multiple pockets" />
                     <div class="product-info">
-                        <p class="product-tag">Essentials</p>
-                        <h3>Soft Knit Set</h3>
-                        <p>Layer-ready textures designed for all-day ease.</p>
-                        <span>$84</span>
+                        <p class="product-tag">Performance Scrubs</p>
+                        <h3>Core Flex Scrub Pants</h3>
+                        <p>Jogger style with elastic waistband and multiple utility pockets.</p>
+                        <span>$39.99</span>
                     </div>
                 </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80"
-                        alt="Stylish model wearing a relaxed dress" />
+                <article class="product-card reveal">
+                    <div class="product-actions">
+                        <button class="btn-quickview" aria-label="Quick view">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <button class="btn-wishlist" aria-label="Add to wishlist">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                        <button class="btn-share" aria-label="Share product">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 16.08c-1.22 0-2.26.86-2.55 2.02h-1.88L7 14.2l-.38-.38L3 14.76l-.38.38v-.03c.32-1.16 1.2-2.08 2.34-2.08h1.38l2.72-2.72.38-.38.38.38L16 12l1.88 1.88c.29.3.29.77 0 1.06l-1.88 1.88-.38.38-.38-.38-2.72-2.72H11c-1.14 0-2.06.92-2.34 2.08v.03l-.38.38-.38-.38-4.24 4.24-.38.38v.03c-.32 1.16.8 2.08 2.06 2.08h1.38l2.72 2.72.38.38.38-.38L18 16.08z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0301ba260e5?auto=format&fit=crop&w=800&q=80"
+                        alt="White lab coat worn over scrubs in hospital setting" />
                     <div class="product-info">
-                        <p class="product-tag">Statement</p>
-                        <h3>Flow Midi Dress</h3>
-                        <p>Fluid movement with clean lines and rich color.</p>
-                        <span>$96</span>
+                        <p class="product-tag">Lab Wear</p>
+                        <h3>Premium Lab Coat</h3>
+                        <p>Fluid-resistant with RFID pocket and button-free snap closure.</p>
+                        <span>$68.99</span>
                     </div>
                 </article>
+            </div>
+            <!-- Related Products Section -->
+            <div class="related-products reveal">
+                <div class="section-heading">
+                    <h2>Complete Your Professional Wardrobe</h2>
+                </div>
+                <div class="product-grid">
+                    <article class="product-card reveal">
+                        <div class="product-actions">
+                            <button class="btn-quickview" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <button class="btn-wishlist" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </button>
+                            <button class="btn-share" aria-label="Share product">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 16.08c-1.22 0-2.26.86-2.55 2.02h-1.88L7 14.2l-.38-.38L3 14.76l-.38.38v-.03c.32-1.16 1.2-2.08 2.34-2.08h1.38l2.72-2.72.38-.38.38.38L16 12l1.88 1.88c.29.3.29.77 0 1.06l-1.88 1.88-.38.38-.38-.38-2.72-2.72H11c-1.14 0-2.06.92-2.34 2.08v.03l-.38.38-.38-.38-4.24 4.24-.38.38v.03c-.32 1.16.8 2.08 2.06 2.08h1.38l2.72 2.72.38.38.38-.38L18 16.08z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1582719478250-8916315f864b?auto=format&fit=crop&w=800&q=80"
+                            alt="Healthcare professional wearing blue scrub top and pants" />
+                        <div class="product-info">
+                            <p class="product-tag">Performance Scrubs</p>
+                            <h3>Core Flex Scrub Top</h3>
+                            <p>Moisture-wicking fabric with 4-way stretch and antimicrobial finish.</p>
+                            <span>$34.99</span>
+                        </div>
+                    </article>
+                    <article class="product-card reveal">
+                        <div class="product-actions">
+                            <button class="btn-quickview" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="12" y1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <button class="btn-wishlist" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </button>
+                            <button class="btn-share" aria-label="Share product">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 16.08c-1.22 0-2.26.86-2.55 2.02h-1.88L7 14.2l-.38-.38L3 14.76l-.38.38v-.03c.32-1.16 1.2-2.08 2.34-2.08h1.38l2.72-2.72.38-.38.38.38L16 12l1.88 1.88c.29.3.29.77 0 1.06l-1.88 1.88-.38.38-.38-.38-2.72-2.72H11c-1.14 0-2.06.92-2.34 2.08v.03l-.38.38-.38-.38-4.24 4.24-.38.38v.03c-.32 1.16.8 2.08 2.06 2.08h1.38l2.72 2.72.38.38.38-.38L18 16.08z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1581091887319-5c8d5a7ec6b1?auto=format&fit=crop&w=800&q=80"
+                            alt="Close-up of scrub pants with multiple pockets" />
+                        <div class="product-info">
+                            <p class="product-tag">Performance Scrubs</p>
+                            <h3>Core Flex Scrub Pants</h3>
+                            <p>Jogger style with elastic waistband and multiple utility pockets.</p>
+                            <span>$39.99</span>
+                        </div>
+                    </article>
+                    <article class="product-card reveal">
+                        <div class="product-actions">
+                            <button class="btn-quickview" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <button class="btn-wishlist" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </button>
+                            <button class="btn-share" aria-label="Share product">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 16.08c-1.22 0-2.26.86-2.55 2.02h-1.88L7 14.2l-.38-.38L3 14.76l-.38.38v-.03c.32-1.16 1.2-2.08 2.34-2.08h1.38l2.72-2.72.38-.38.38.38L16 12l1.88 1.88c.29.3.29.77 0 1.06l-1.88 1.88-.38.38-.38-.38-2.72-2.72H11c-1.14 0-2.06.92-2.34 2.08v.03l-.38.38-.38-.38-4.24 4.24-.38.38v.03c-.32 1.16.8 2.08 2.06 2.08h1.38l2.72 2.72.38.38.38-.38L18 16.08z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0301ba260e5?auto=format&fit=crop&w=800&q=80"
+                            alt="White lab coat worn over scrubs in hospital setting" />
+                        <div class="product-info">
+                            <p class="product-tag">Lab Wear</p>
+                            <h3>Premium Lab Coat</h3>
+                            <p>Fluid-resistant with RFID pocket and button-free snap closure.</p>
+                            <span>$68.99</span>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
         <section id="about" class="about">
-            <div class="about-card">
-                <p class="eyebrow">Why choose Viralaya</p>
-                <h2>Crafted for a confident, effortless wardrobe.</h2>
-                <p>
-                    We blend timeless silhouettes with modern detailing and premium fabrics so you can dress beautifully
-                    without compromise.
-                </p>
+            <div class="about-card reveal">
+                <div>
+                    <p class="eyebrow">Why choose Viralaya</p>
+                    <h2>Engineered for the demands of professional work</h2>
+                    <p>
+                        We understand that healthcare professionals deserve workwear that performs as reliably as they do. Our fabrics are scientifically engineered to provide comfort, protection, and professional appearance throughout the longest shifts.
+                    </p>
+                </div>
+                <ul class="about-points">
+                    <li>Antimicrobial fabric technology that resists odor and bacteria</li>
+                    <li>Moisture-wicking and breathable materials for all-day comfort</li>
+                    <li>Professional tailored fits that maintain appearance through 12+ hour shifts</li>
+                    <li>Durable construction that withstands frequent industrial washing</li>
+                </ul>
             </div>
         </section>
 
-        <section id="contact" class="newsletter">
+        <!-- Testimonials Section -->
+        <section class="testimonials reveal">
+            <div class="section-heading">
+                <p class="eyebrow">What Professionals Say</p>
+                <h2>Trust from Healthcare Heroes</h2>
+            </div>
+            <div class="testimonials-grid">
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-content">
+                        <p>"As an ER nurse, I need scrubs that can keep up with 12-hour shifts. Viralaya's performance fabric actually stays fresh and comfortable from my first patient to my last chart."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0301ba260e5?auto=format&fit=crop&w=100&q=80"
+                            alt="Nurse in scrubs" class="author-avatar">
+                        <div class="author-info">
+                            <h3>Jessica R., RN</h3>
+                            <div class="rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-content">
+                        <p>"Finally, scrubs that understand the demands of the OR. The fabric moves with me during long procedures and still looks professional after hours in the operating room."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=100&q=80"
+                            alt="Surgeon in scrubs" class="author-avatar">
+                        <div class="author-info">
+                            <h3>Dr. Michael T., MD</h3>
+                            <div class="rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-content">
+                        <p>"I work in a busy pediatric clinic and need scrubs that can handle constant washing and still look great. These have held up better than any other brand I've tried."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1599566150163-291c4dacaa7e?auto=format&fit=crop&w=100&q=80"
+                            alt="Pediatric nurse practitioner" class="author-avatar">
+                        <div class="author-info">
+                            <h3>Ashley K., CPNP</h3>
+                            <div class="rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="newsletter reveal">
             <div>
                 <p class="eyebrow">Stay in the loop</p>
                 <h2>Get first access to drops and exclusive offers.</h2>
             </div>
-            <form>
-                <input type="email" placeholder="Enter your email" aria-label="Email address" />
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" aria-label="Email address" required />
                 <button type="submit">Join now</button>
+                <div class="form-message" id="form-message"></div>
             </form>
         </section>
     </main>
 
     <footer>
         <p>© <span id="year"></span> Viralaya. Designed for modern living.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 11.37a4 4 0 11-7.73 0" fill="currentColor"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 12c0-1.2-.2-2.4-.6-3.4l-6 4v-3h-2v-3h2V7a4.7 4.7 0 00-2-4.1c-1.3 0-2.5.6-3.2 1.4l-.8-.3v3h-2v3h3v3.6l-4.8 3.2v2h4.2l.6-.5z" fill="currentColor"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" fill="currentColor"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Pinterest">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C8.74 0 6 2.74 6 6c0 3.31 2.66 6.13 5.91 7.52l-.27 1.77l-.8-.29c-.9.34-1.48.54-1.48 1.42 0 .91.74 1.57 1.47 1.57.86 0 1.7-.45 1.96-1.07l.39 1.81c-.32.47-.79.73-1.36.73A5.92 5.92 0 016 13.44c0-3.31 2.69-6 6-6s6 2.69 6 6c0 1.08-.28 2.09-.78 2.94l-1.52-.08c-.57.06-1.04.37-1.04.94 0 .82.67 1.49 1.5 1.49 1.13 0 2.05-.8 2.05-1.78 0-.94-.57-1.55-1.24-1.85-.39-.17-.92-.27-1.47-.22-.68.05-1.23.49-1.23 1.16 0 .73.49 1.32 1.17 1.32.91 0 1.64-.74 1.64-1.64 0-.23-.02-.46-.05-.68.83-.23 1.56-.89 1.8-1.66-.09 1.1-.09 2.23-.09 3.38 0 4.61-3.74 8.36-8.34 8.36S4.66 20.61 4.66 16H4c0-.83.29-1.59.78-2.11l1.03-.11c-.23.6-.36 1.27-.36 2 0 2.76 2.24 5 5 5 3.73 0 6.76-2.98 6.76-6.69 0-.23-.05-.46-.05-.68z" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
     </footer>
+
+    <!-- Product Quick View Modal -->
+    <div id="quickview-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-content-inner">
+                <!-- Product details will be injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
