@@ -1,0 +1,282 @@
+:root {
+  --bg: #fffaf6;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #8b5e3c;
+  --accent-soft: #f6e9de;
+  --border: #eee1d6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 5%;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 250, 246, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.4rem;
+  color: var(--muted);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.menu-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.hero,
+.products,
+.about,
+.newsletter {
+  padding: 4.5rem 5%;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 650px;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.85rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.button.secondary {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.hero-card,
+.about-card,
+.newsletter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.04);
+}
+
+.hero-card {
+  padding: 2rem;
+}
+
+.hero-card h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading h2,
+.about-card h2,
+.newsletter h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.product-info {
+  padding-top: 1rem;
+}
+
+.product-tag {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.product-info h3 {
+  margin-bottom: 0.35rem;
+}
+
+.product-info p {
+  color: var(--muted);
+  margin-bottom: 0.7rem;
+}
+
+.product-info span {
+  font-weight: 700;
+}
+
+.about-card {
+  padding: 2rem;
+  max-width: 760px;
+}
+
+.newsletter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 5% 4rem;
+}
+
+.newsletter form {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.newsletter input {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  min-width: 240px;
+}
+
+.newsletter button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 5% 2rem;
+  color: var(--muted);
+}
+
+@media (max-width: 840px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    display: none;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0.9rem 1rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  }
+
+  body.nav-open .nav-links {
+    display: flex;
+  }
+
+  .hero,
+  .products,
+  .about,
+  .newsletter {
+    padding: 3rem 5%;
+  }
+}
