@@ -4,107 +4,293 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Viralaya | Modern Clothing</title>
+    <title>Viralaya | Uniforms & Fabrics, Woven in Karur</title>
     <meta name="description"
-        content="Viralaya offers contemporary clothing designed for comfort, confidence, and everyday style." />
+        content="Viralaya is a Karur-based manufacturer of school, corporate, and industrial uniforms plus fabrics by the roll. 2 years in-house weaving, stitching, embroidery, and finishing at 158/1 Othaiyur Road, T.Sellandipalayam, Karur – 639003." />
+    <meta name="theme-color" content="#fbf7f3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧵</text></svg>" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
     <header class="topbar">
-        <a class="brand" href="#">Viralaya</a>
+        <a class="brand" href="#">
+            <span class="brand-mark">V</span>
+            <span class="brand-text">Viralaya</span>
+        </a>
         <nav class="nav-links" aria-label="Primary navigation">
-            <a href="#shop">Shop</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#industries">Industries</a>
             <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact">Get a quote</a>
         </nav>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="topbar-actions">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon" aria-hidden="true"></span>
+            </button>
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
     </header>
 
     <main>
+        <!-- HERO -->
         <section class="hero">
             <div class="hero-content">
-                <p class="eyebrow">New Season • 2026</p>
-                <h1>Elevate your everyday look.</h1>
-                <p>
-                    Discover statement essentials crafted for comfort, confidence, and effortless style.
+                <p class="eyebrow reveal">Karur, Tamil Nadu · Manufacturers since 2 years</p>
+                <h1 class="reveal">Uniforms &amp; fabrics, woven in Karur.</h1>
+                <p class="reveal">
+                    From school uniforms to industrial workwear and fabric by the roll — every order
+                    is woven, stitched, embroidered, and finished under one roof. No middlemen, no surprises.
                 </p>
-                <div class="hero-actions">
-                    <a class="button primary" href="#shop">Shop new arrivals</a>
-                    <a class="button secondary" href="#about">Why Viralaya</a>
+                <div class="hero-actions reveal">
+                    <a class="button primary" href="#contact">Get a quote</a>
+                    <a class="button secondary" href="#capabilities">See what we make</a>
+                </div>
+                <ul class="hero-trust reveal" aria-label="Why work with Viralaya">
+                    <li><span>●</span> 100% in-house manufacturing</li>
+                    <li><span>●</span> MOQ-friendly for small orders</li>
+                    <li><span>●</span> Pan-India dispatch &amp; export</li>
+                </ul>
+            </div>
+            <aside class="hero-card reveal" aria-label="Viralaya at a glance">
+                <div class="hero-card-image" role="img" aria-label="Loom and fabric at the Viralaya workshop"></div>
+                <div class="hero-card-content">
+                    <p class="eyebrow">From loom to logo</p>
+                    <h2>One roof. Every step.</h2>
+                    <p>
+                        Weaving, knitting, dyeing, stitching, embroidery, screen printing, finishing
+                        and quality checks — handled in-house in Karur, so timelines stay tight and
+                        quality stays consistent.
+                    </p>
+                </div>
+            </aside>
+        </section>
+
+        <!-- CAPABILITIES (replaces "Shop") -->
+        <section id="capabilities" class="capabilities">
+            <div class="section-heading reveal">
+                <p class="eyebrow">What we make</p>
+                <h2>Capabilities built for bulk &amp; custom orders.</h2>
+                <p class="section-sub">
+                    Whether you need fifty school uniforms or fifty thousand metres of fabric,
+                    the same factory handles it.
+                </p>
+            </div>
+
+            <div class="capability-grid">
+                <article class="capability-card reveal">
+                    <div class="capability-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80')">
+                    </div>
+                    <div class="capability-body">
+                        <p class="capability-tag">Uniforms</p>
+                        <h3>School uniforms</h3>
+                        <p>Shirts, trousers, skirts, ties, blazers and sports kits — standardised or
+                            custom-designed, with logo embroidery and name labels.</p>
+                        <a class="capability-link" href="#contact">Request school quote →</a>
+                    </div>
+                </article>
+
+                <article class="capability-card reveal">
+                    <div class="capability-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=900&q=80')">
+                    </div>
+                    <div class="capability-body">
+                        <p class="capability-tag">Uniforms</p>
+                        <h3>Corporate &amp; hospitality</h3>
+                        <p>Office formals, hotel front-of-house, retail, F&amp;B, salon &amp; spa —
+                            tailored fits, brand-consistent colours, and repeat-order reliability.</p>
+                        <a class="capability-link" href="#contact">Discuss your brand →</a>
+                    </div>
+                </article>
+
+                <article class="capability-card reveal">
+                    <div class="capability-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=900&q=80')">
+                    </div>
+                    <div class="capability-body">
+                        <p class="capability-tag">Workwear</p>
+                        <h3>Industrial uniforms</h3>
+                        <p>Factory, warehouse, healthcare (scrubs, lab coats, patient wear),
+                            coveralls, high-visibility and safety-conscious options.</p>
+                        <a class="capability-link" href="#contact">Spec your workwear →</a>
+                    </div>
+                </article>
+
+                <article class="capability-card reveal">
+                    <div class="capability-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80')">
+                    </div>
+                    <div class="capability-body">
+                        <p class="capability-tag">Branding</p>
+                        <h3>Custom logo work</h3>
+                        <p>In-house embroidery, screen printing, woven labels, name tags and
+                            heat-transfer branding — applied to your uniform or supplied as standalone
+                            merchandise.</p>
+                        <a class="capability-link" href="#contact">Share your logo →</a>
+                    </div>
+                </article>
+
+                <article class="capability-card reveal">
+                    <div class="capability-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=900&q=80')">
+                    </div>
+                    <div class="capability-body">
+                        <p class="capability-tag">Fabrics</p>
+                        <h3>Fabric by the roll</h3>
+                        <p>Cotton, poly-cotton, blends, drill, twill, poplin and oxford — supplied
+                            wholesale by the metre or roll, with custom dyeing and finishing on request.</p>
+                        <a class="capability-link" href="#contact">Get fabric swatches →</a>
+                    </div>
+                </article>
+
+                <article class="capability-card reveal">
+                    <div class="capability-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80')">
+                    </div>
+                    <div class="capability-body">
+                        <p class="capability-tag">Supply</p>
+                        <h3>Bulk &amp; contract orders</h3>
+                        <p>Recurring supply for institutions, government tenders, large workforces and
+                            private-label buyers — with documented capacity and consistent lead times.</p>
+                        <a class="capability-link" href="#contact">Plan a contract →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- INDUSTRIES strip -->
+        <section id="industries" class="industries">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Who we supply</p>
+                <h2>Industries we dress.</h2>
+            </div>
+            <ul class="industry-chips reveal" aria-label="Industries served">
+                <li>Schools &amp; colleges</li>
+                <li>Hotels &amp; hospitality</li>
+                <li>Restaurants &amp; cafés</li>
+                <li>Hospitals &amp; clinics</li>
+                <li>Factories &amp; warehouses</li>
+                <li>Corporate offices</li>
+                <li>Retail &amp; salons</li>
+                <li>Sports clubs</li>
+                <li>Government &amp; tenders</li>
+                <li>Wholesalers &amp; exporters</li>
+            </ul>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about">
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <p class="eyebrow">Why Viralaya</p>
+                    <h2>Crafted in Karur. Trusted across India.</h2>
+                    <p>
+                        Karur has been one of India's most important textile clusters for generations.
+                        We work out of that heritage — with the looms, the dyers, the tailors, and the
+                        finishers all under one roof, so your order doesn't bounce between five
+                        contractors.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-label">In-house manufacturing</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">All under</span>
+                            <span class="stat-label">One roof in Karur</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">Pan-India</span>
+                            <span class="stat-label">+ Export dispatch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process-card reveal">
+                    <p class="eyebrow">How an order flows</p>
+                    <h2>From enquiry to dispatch.</h2>
+                    <ol class="process-list">
+                        <li><span>01</span> Enquiry &amp; brief — quantity, design, fabric, branding</li>
+                        <li><span>02</span> Sample &amp; quotation — swatches and prototype within days</li>
+                        <li><span>03</span> Bulk production — cutting, stitching, embroidery, finishing</li>
+                        <li><span>04</span> Quality check &amp; dispatch — packed and shipped to you</li>
+                    </ol>
                 </div>
             </div>
-            <div class="hero-card">
-                <p class="eyebrow">Editor’s pick</p>
-                <h2>Signature layers for every mood</h2>
-                <p>Lightweight tailoring, elevated basics, and polished outerwear in one curated drop.</p>
-            </div>
         </section>
 
-        <section id="shop" class="products">
-            <div class="section-heading">
-                <p class="eyebrow">Featured pieces</p>
-                <h2>Fresh styles for the modern wardrobe</h2>
-            </div>
-            <div class="product-grid">
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80"
-                        alt="Model wearing a relaxed jacket" />
-                    <div class="product-info">
-                        <p class="product-tag">Outerwear</p>
-                        <h3>Contour Jacket</h3>
-                        <p>Structured comfort with a modern silhouette.</p>
-                        <span>$128</span>
-                    </div>
-                </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
-                        alt="Minimalist outfit with a knit top" />
-                    <div class="product-info">
-                        <p class="product-tag">Essentials</p>
-                        <h3>Soft Knit Set</h3>
-                        <p>Layer-ready textures designed for all-day ease.</p>
-                        <span>$84</span>
-                    </div>
-                </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80"
-                        alt="Stylish model wearing a relaxed dress" />
-                    <div class="product-info">
-                        <p class="product-tag">Statement</p>
-                        <h3>Flow Midi Dress</h3>
-                        <p>Fluid movement with clean lines and rich color.</p>
-                        <span>$96</span>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="about-card">
-                <p class="eyebrow">Why choose Viralaya</p>
-                <h2>Crafted for a confident, effortless wardrobe.</h2>
+        <!-- QUOTE / CONTACT (replaces "Newsletter") -->
+        <section id="contact" class="quote-section reveal">
+            <div class="quote-text">
+                <p class="eyebrow">Get a quote</p>
+                <h2>Tell us what you need.</h2>
                 <p>
-                    We blend timeless silhouettes with modern detailing and premium fabrics so you can dress beautifully
-                    without compromise.
+                    Share a few details and we'll get back with a quotation, fabric swatches,
+                    or a customisation plan — usually within one business day.
                 </p>
+                <div class="contact-meta">
+                    <p><strong>Workshop:</strong> 158/1, Othaiyur Road, T.Sellandipalayam, Karur – 639003, Tamil Nadu</p>
+                    <p><strong>Phone:</strong> <a href="tel:+919655414567">+91 96554 14567</a> · <a href="tel:+919994511361">+91 99945 11361</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:viralayaclothings@gmail.com">viralayaclothings@gmail.com</a></p>
+                </div>
             </div>
-        </section>
-
-        <section id="contact" class="newsletter">
-            <div>
-                <p class="eyebrow">Stay in the loop</p>
-                <h2>Get first access to drops and exclusive offers.</h2>
-            </div>
-            <form>
-                <input type="email" placeholder="Enter your email" aria-label="Email address" />
-                <button type="submit">Join now</button>
+            <form class="quote-form" id="quote-form">
+                <div class="form-row">
+                    <label>
+                        <span>Your name</span>
+                        <input type="text" name="name" required placeholder="Full name" />
+                    </label>
+                    <label>
+                        <span>Company / institution</span>
+                        <input type="text" name="company" placeholder="Optional" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Phone</span>
+                        <input type="tel" name="phone" required placeholder="+91" />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" required placeholder="you@company.com" />
+                    </label>
+                </div>
+                <label class="form-full">
+                    <span>What do you need?</span>
+                    <select name="type" required>
+                        <option value="">Select a category</option>
+                        <option>School uniforms</option>
+                        <option>Corporate / hospitality uniforms</option>
+                        <option>Industrial / healthcare uniforms</option>
+                        <option>Custom logo / branding work</option>
+                        <option>Fabric by the roll</option>
+                        <option>Bulk / contract supply</option>
+                        <option>Other (tell us in the message)</option>
+                    </select>
+                </label>
+                <label class="form-full">
+                    <span>Message</span>
+                    <textarea name="message" rows="4" placeholder="Quantities, fabric preferences, branding, timelines…"></textarea>
+                </label>
+                <button type="submit" class="button primary">Send enquiry</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>© <span id="year"></span> Viralaya. Designed for modern living.</p>
+        <p>© <span id="year"></span> Viralaya · 158/1, Othaiyur Road, T.Sellandipalayam, Karur – 639003 · Uniforms &amp; fabrics, woven in Karur.</p>
+        <p class="footer-contact">
+            <a href="tel:+919655414567">+91 96554 14567</a> ·
+            <a href="tel:+919994511361">+91 99945 11361</a> ·
+            <a href="mailto:viralayaclothings@gmail.com">viralayaclothings@gmail.com</a>
+        </p>
     </footer>
 
     <script src="script.js"></script>
