@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Viralaya | Woven for Life</title>
+    <title>Viralaya | Made for repeat wear</title>
     <meta name="description"
-        content="Viralaya offers contemporary clothing designed for comfort, confidence, and everyday style." />
+        content="Viralaya creates considered clothing with thoughtful fabrics, purposeful details, and ease for everyday wear." />
     <meta name="theme-color" content="#432d1d" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
@@ -17,6 +17,19 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 </head>
+
+<!-- Festival configuration (acts like env variable) -->
+<script>
+    window.VIRALAYA_FESTIVAL = {
+        enabled: false,           // Set to true to show festival section
+        name: "Diwali",           // Festival name
+        image: "https://placehold.co/800x600/7c2d12/f59e0b?text=Diwali+Festival&font=roboto", // Diwali placeholder
+        alt: "Diwali Collection", // Alt text for accessibility
+        label: "Diwali 2024 Collection",
+        ctaText: "Explore Diwali Edit",
+        ctaLink: "#craft"
+    };
+</script>
 
 <body>
     <!-- Curtain reveal on page load -->
@@ -32,19 +45,36 @@
         <span class="thread t3"></span>
     </div>
 
+    <div class="assurance-bar">
+        <p>Considered fabrics. Purposeful details. Made for repeat wear.</p>
+    </div>
+
     <header class="topbar">
         <a class="brand" href="#" aria-label="Viralaya home">
             <img class="brand-logo" src="logo.png" alt="Viralaya logo" />
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
-            <a href="#shop">Shop</a>
+            <a href="#values">Values</a>
             <a href="#craft">Craft</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
         <div class="header-actions">
             <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
-                <span class="theme-icon">☀</span>
+                <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
             </button>
             <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -56,30 +86,32 @@
         <section class="hero">
             <div class="hero-weave" aria-hidden="true"></div>
             <div class="hero-content reveal">
-                <p class="eyebrow stitched">New Season • 2026</p>
+                <p class="eyebrow stitched">Clothing, considered</p>
                 <h1>
-                    <span class="line"><span>Woven with</span></span>
-                    <span class="line"><span class="accent">intention.</span></span>
-                    <span class="line"><span>Worn with ease.</span></span>
+                    <span class="line"><span>Made for the</span></span>
+                    <span class="line"><span class="accent">life you live.</span></span>
+                    <span class="line"><span>Kept for years.</span></span>
                 </h1>
                 <p class="lede">
-                    Statement essentials cut from premium fabrics — crafted for comfort,
-                    confidence, and effortless everyday style.
+                    Viralaya makes considered clothing from fabrics that feel good to wear,
+                    with purposeful details that earn a place in your everyday wardrobe.
                 </p>
                 <div class="hero-actions">
-                    <a class="button primary" href="#shop"><span>Shop new arrivals</span></a>
-                    <a class="button secondary" href="#craft"><span>Our craft</span></a>
+                    <a class="button primary" href="#craft"><span>See how we make</span></a>
+                    <a class="button secondary" href="#about"><span>Our philosophy</span></a>
                 </div>
             </div>
             <div class="hero-visual reveal" aria-hidden="true">
                 <div class="swatch-stack">
                     <div class="swatch s1"></div>
                     <div class="swatch s2"></div>
-                    <div class="swatch s3">
-                        <p class="eyebrow">Editor’s pick</p>
-                        <h2>Signature layers for every mood</h2>
-                        <p>Lightweight tailoring &amp; polished outerwear in one curated drop.</p>
-                        <span class="pin" aria-hidden="true"></span>
+                    <div class="swatch s4" aria-hidden="true">
+                        <div class="image-grid">
+                            <img src="photo-grid/church-of-the-king-j9jZSqfH5YI-unsplash.jpg" alt="Children wearing uniforms" />
+                            <img src="photo-grid/robin-worrall-QaYcPAO6SIc-unsplash.jpg" alt="Workers in uniforms" />
+                            <img src="photo-grid/rodrigo_salomonhc-receptionists-5975962_1920.jpg" alt="Craftsmanship at work" />
+                            <img src="photo-grid/voltamax-nurse-2019420_1920.jpg" alt="Uniform details" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,73 +122,83 @@
             </div>
         </section>
 
-        <!-- Ribbon marquee -->
-        <div class="ribbon" aria-hidden="true">
+        <div class="ribbon" aria-label="Viralaya commitments">
             <div class="ribbon-track">
-                <span>Hand-finished seams</span><span>✦</span>
-                <span>Organic cotton</span><span>✦</span>
-                <span>Slow fashion</span><span>✦</span>
-                <span>Loomed with love</span><span>✦</span>
-                <span>Hand-finished seams</span><span>✦</span>
-                <span>Organic cotton</span><span>✦</span>
-                <span>Slow fashion</span><span>✦</span>
-                <span>Loomed with love</span><span>✦</span>
+                <span>Considered fabrics</span><span>✦</span>
+                <span>Purposeful details</span><span>✦</span>
+                <span>Ease in every layer</span><span>✦</span>
+                <span>Made for repeat wear</span><span>✦</span>
+                <span>Considered fabrics</span><span>✦</span>
+                <span>Purposeful details</span><span>✦</span>
+                <span>Ease in every layer</span><span>✦</span>
+                <span>Made for repeat wear</span><span>✦</span>
             </div>
         </div>
 
-        <section id="shop" class="products">
-            <div class="section-heading reveal">
-                <p class="eyebrow stitched">Signature fabrics</p>
-                <h2>Materials chosen for comfort, texture, and longevity</h2>
+        <!-- Festival Season Section -->
+        <section id="festival" class="festival-section" aria-labelledby="festival-heading" hidden>
+            <div class="festival-content reveal">
+                <div class="festival-image-wrapper">
+                    <img src="" alt="" id="festival-section-img" />
+                    <div class="festival-badge" id="festival-badge"></div>
+                </div>
+                <div class="festival-info">
+                    <p class="eyebrow stitched" id="festival-tagline">Seasonal Celebration</p>
+                    <h2 id="festival-heading"></h2>
+                    <p id="festival-description"></p>
+                    <a class="button primary" id="festival-cta" href="#craft"><span>Explore Collection</span></a>
+                </div>
             </div>
-            <div class="product-grid">
-                <article class="product-card reveal">
-                    <div class="product-media">
-                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80"
-                            alt="Close-up of woven cotton fabric" loading="lazy" />
-                        <span class="fabric-tag">Cotton</span>
+        </section>
+
+        <section id="values" class="values">
+            <div class="section-heading reveal">
+                <p class="eyebrow stitched">What guides our work</p>
+                <h2>Care is designed into every decision.</h2>
+            </div>
+            <div class="values-grid">
+                <article class="value reveal">
+                    <div class="value-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z" />
+                            <path d="m4 7.5 8 4.5 8-4.5M12 12v9" />
+                        </svg>
                     </div>
-                    <div class="product-info">
-                        <h3>Organic Cotton Twill</h3>
-                        <p>Soft, breathable fabric with a refined woven finish for everyday layering.</p>
-                        <div class="product-meta">
-                            <span class="price">$42</span>
-                            <span class="thread-line" aria-hidden="true"></span>
-                            <a href="#" class="mini-link">View</a>
-                        </div>
-                    </div>
+                    <h3>Fabric first</h3>
+                    <p>We begin with a material’s feel, weight, and drape so it supports the way you wear it.</p>
                 </article>
-                <article class="product-card reveal" style="--delay: .12s">
-                    <div class="product-media">
-                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80"
-                            alt="Close-up of textured linen fabric" loading="lazy" />
-                        <span class="fabric-tag">Linen</span>
+                <article class="value reveal" style="--delay: .08s">
+                    <div class="value-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <path d="M5 18c2.2-5.5 4.5-8.5 7-12 2.5 3.5 4.8 6.5 7 12" stroke-linecap="round" />
+                            <path d="M4 18h16" stroke-linecap="round" />
+                            <path d="M8 13h8" stroke-dasharray="2 2" />
+                        </svg>
                     </div>
-                    <div class="product-info">
-                        <h3>Washed Linen Blend</h3>
-                        <p>Lightweight and airy fabric designed for breezy, elevated silhouettes.</p>
-                        <div class="product-meta">
-                            <span class="price">$36</span>
-                            <span class="thread-line" aria-hidden="true"></span>
-                            <a href="#" class="mini-link">View</a>
-                        </div>
-                    </div>
+                    <h3>Ease in the cut</h3>
+                    <p>Each silhouette is considered around real days, natural movement, and the layers you reach for
+                        most.</p>
                 </article>
-                <article class="product-card reveal" style="--delay: .24s">
-                    <div class="product-media">
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
-                            alt="Close-up of wool textile texture" loading="lazy" />
-                        <span class="fabric-tag">Wool</span>
+                <article class="value reveal" style="--delay: .16s">
+                    <div class="value-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <path d="M7 4c4 0 6 3.4 10 3.4v10.1C13 17.5 11 14 7 14V4Z" />
+                            <path d="M7 4H5v16h2" stroke-linecap="round" />
+                            <path d="M10 9h4M10 12h3" stroke-linecap="round" />
+                        </svg>
                     </div>
-                    <div class="product-info">
-                        <h3>Merino Wool Knit</h3>
-                        <p>Warm, structured texture with a soft hand feel and premium drape.</p>
-                        <div class="product-meta">
-                            <span class="price">$58</span>
-                            <span class="thread-line" aria-hidden="true"></span>
-                            <a href="#" class="mini-link">View</a>
-                        </div>
+                    <h3>Details that count</h3>
+                    <p>Finishing touches are treated as part of the garment, never an afterthought.</p>
+                </article>
+                <article class="value reveal" style="--delay: .24s">
+                    <div class="value-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <circle cx="12" cy="12" r="8" />
+                            <path d="m8.5 12 2.2 2.2 4.8-4.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </div>
+                    <h3>Reviewed with care</h3>
+                    <p>Every piece is looked over for the small details that help it feel right from the first wear.</p>
                 </article>
             </div>
         </section>
@@ -164,38 +206,39 @@
         <section id="craft" class="craft">
             <div class="section-heading reveal">
                 <p class="eyebrow stitched">The Viralaya way</p>
-                <h2>Every thread tells a story</h2>
+                <h2>From first touch to final finish.</h2>
             </div>
             <div class="craft-grid">
-                <div class="craft-card reveal">
+                <article class="craft-card reveal">
                     <div class="craft-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                             <circle cx="12" cy="12" r="8" />
                             <path d="M12 4v16M4 12h16M6.3 6.3l11.4 11.4M17.7 6.3 6.3 17.7" stroke-linecap="round" />
                         </svg>
                     </div>
-                    <h3>Loomed slowly</h3>
-                    <p>Small-batch weaving preserves texture, drape, and character in every panel.</p>
-                </div>
-                <div class="craft-card reveal" style="--delay: .12s">
+                    <h3>Choose with purpose</h3>
+                    <p>We start with fabric character—its texture, weight, and drape—so every choice serves the garment.
+                    </p>
+                </article>
+                <article class="craft-card reveal" style="--delay: .12s">
                     <div class="craft-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                             <path d="M3 17c4-8 14-8 18 0" stroke-linecap="round" stroke-dasharray="3 3" />
                             <path d="M3 12c4-8 14-8 18 0" stroke-linecap="round" />
                         </svg>
                     </div>
-                    <h3>Stitched to last</h3>
-                    <p>Reinforced seams and hand-finished hems built for years of wear.</p>
-                </div>
-                <div class="craft-card reveal" style="--delay: .24s">
+                    <h3>Shape with patience</h3>
+                    <p>Thoughtful construction brings ease to the everyday pieces you depend on most.</p>
+                </article>
+                <article class="craft-card reveal" style="--delay: .24s">
                     <div class="craft-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                             <path d="M12 3c3 4 6 6.5 6 10a6 6 0 1 1-12 0c0-3.5 3-6 6-10Z" />
                         </svg>
                     </div>
-                    <h3>Dyed naturally</h3>
-                    <p>Plant-based dyes create rich, earthy tones that soften beautifully over time.</p>
-                </div>
+                    <h3>Finish with intention</h3>
+                    <p>We give the smallest details the same attention as the silhouette they complete.</p>
+                </article>
             </div>
         </section>
 
@@ -205,11 +248,11 @@
                 <span class="corner-stitch tr" aria-hidden="true"></span>
                 <span class="corner-stitch bl" aria-hidden="true"></span>
                 <span class="corner-stitch br" aria-hidden="true"></span>
-                <p class="eyebrow stitched">Why choose Viralaya</p>
-                <h2>Crafted for a confident, effortless wardrobe.</h2>
+                <p class="eyebrow stitched">Why Viralaya</p>
+                <h2>A smaller wardrobe, shaped by intention.</h2>
                 <p>
-                    We blend timeless silhouettes with modern detailing and premium fabrics so you can
-                    dress beautifully without compromise.
+                    Viralaya believes in clothing that earns its place: thoughtful enough to feel special,
+                    easy enough to wear often, and made to stay with you through the life you live.
                 </p>
             </div>
         </section>
@@ -217,20 +260,25 @@
         <section id="contact" class="newsletter">
             <div class="newsletter-inner reveal">
                 <div>
-                    <p class="eyebrow stitched">Stay in the loop</p>
-                    <h2>Get first access to drops and exclusive offers.</h2>
+                    <p class="eyebrow stitched">Get in touch</p>
+                    <h2>We'd love to hear from you.</h2>
+                    <p>Have questions about our collections, sizing, or orders? Fill out the form and we'll respond soon.</p>
                 </div>
-                <form>
-                    <input type="email" placeholder="Enter your email" aria-label="Email address" required />
-                    <button type="submit" class="button primary"><span>Join now</span></button>
-                </form>
+                <!-- Google Form Embed -->
+                <iframe src="YOUR_GOOGLE_FORM_URL"
+                        title="Viralaya Contact Form"
+                        aria-label="Contact form"
+                        style="width: 100%; min-height: 500px; border: 1px solid var(--thread-soft); border-radius: var(--radius); padding: 0; margin-top: 24px;"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0">Loading...</iframe>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="footer-stitch" aria-hidden="true"></div>
-        <p>© <span id="year"></span> Viralaya. Woven for modern living.</p>
+        <p>© <span id="year"></span> Viralaya. Made for modern living.</p>
     </footer>
 
     <script src="script.js"></script>

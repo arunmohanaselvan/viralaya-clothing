@@ -215,18 +215,42 @@ a {
 }
 
 /* ============================================================
+   Assurance bar
+   ============================================================ */
+.assurance-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgba(138, 122, 92, 0.3);
+  animation: topbar-in 1s var(--ease) 0.8s both;
+}
+
+.assurance-bar p {
+  margin: 0;
+}
+
+/* ============================================================
    Topbar
    ============================================================ */
 .topbar {
   position: fixed;
-  top: 0;
+  top: 29px;
   left: 0;
   right: 0;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px clamp(20px, 5vw, 64px);
+  padding: 15px clamp(20px, 5vw, 64px);
   background: var(--header-bg);
   backdrop-filter: blur(14px);
   border-bottom: 1px dashed rgba(138, 122, 92, 0.35);
@@ -251,15 +275,46 @@ a {
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.3s var(--ease), border-color 0.3s ease;
+  position: relative;
 }
 
 .theme-toggle:hover {
   transform: translateY(-2px);
 }
 
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}
+
 .theme-icon {
-  font-size: 1.05rem;
+  width: 22px;
+  height: 22px;
   line-height: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.theme-icon.sun {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.theme-icon.moon {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.dark-theme .theme-icon.sun {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.dark-theme .theme-icon.moon {
+  opacity: 0;
+  visibility: hidden;
 }
 
 @keyframes topbar-in {
@@ -282,7 +337,7 @@ a {
 
 .brand-logo {
   display: block;
-  width: clamp(180px, 24vw, 340px);
+  width: clamp(88px, 11.2vw, 166px);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 8px 14px rgba(43, 36, 28, 0.08));
@@ -300,7 +355,10 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  padding: 6px 2px;
+  padding: 12px 4px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   transition: color 0.3s;
 }
 
@@ -478,6 +536,7 @@ body.nav-open .menu-toggle span:nth-child(3) {
   align-items: center;
   justify-content: center;
   padding: 15px 30px;
+  min-height: 48px;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -485,6 +544,11 @@ body.nav-open .menu-toggle span:nth-child(3) {
   border-radius: 4px;
   overflow: hidden;
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
 }
 
 .button span {
@@ -630,6 +694,35 @@ body.nav-open .menu-toggle span:nth-child(3) {
   --rot: -1deg;
 }
 
+.swatch.s4 {
+  inset: 18% 4% 6% 4%;
+  display: flex;
+  padding: clamp(16px, 2.5vw, 32px);
+  background:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
+    var(--cream);
+  border: 1px solid rgba(138, 122, 92, 0.25);
+  transform: rotate(-1deg);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+  width: 100%;
+  height: 100%;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
 /* Tailor's pin on the top swatch */
 .pin {
   position: absolute;
@@ -652,6 +745,126 @@ body.nav-open .menu-toggle span:nth-child(3) {
   background: linear-gradient(180deg, #c98a3d, rgba(201, 138, 61, 0.2));
   transform: translate(-50%, -50%) rotate(35deg);
   transform-origin: top;
+}
+
+/* Photo slider in swatch s3 */
+.photo-slider {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  padding: clamp(16px, 2.5vw, 32px);
+}
+
+.photo-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photo-item {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-item img.loaded {
+  opacity: 1;
+}
+
+.photo-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--linen-deep);
+  z-index: 1;
+  animation: shimmer 1.5s infinite;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+.photo-item.loaded::before {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Festival image loading */
+.festival-image-wrapper img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.festival-image-wrapper img.loaded {
+  opacity: 1;
+}
+
+.festival-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--linen-deep);
+  z-index: 0;
+  animation: shimmer 1.5s infinite;
+  transition: opacity 0.3s ease;
+}
+
+.festival-image-wrapper.loaded::before {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--ink);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.slider-nav:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-nav.prev { left: 16px; }
+.slider-nav.next { right: 16px; }
+
+.slider-nav:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 /* Hero wave divider */
@@ -740,129 +953,138 @@ section {
 }
 
 /* ============================================================
-   Products
+   Values / Promises grid
    ============================================================ */
-.product-grid {
+.values {
+  background:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.05) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.05) 0 1px, transparent 1px 5px),
+    var(--linen-deep);
+  border-top: 2px dashed rgba(138, 122, 92, 0.35);
+  border-bottom: 2px dashed rgba(138, 122, 92, 0.35);
+}
+
+.values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: clamp(24px, 3vw, 40px);
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.product-card {
+.value {
   background: var(--cream);
   border-radius: var(--radius);
-  border: 1px solid rgba(138, 122, 92, 0.22);
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(43, 36, 28, 0.06);
+  padding: 40px 28px 32px;
+  text-align: center;
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 
-.product-card:hover {
-  transform: translateY(-10px);
+.value:hover {
+  transform: translateY(-6px);
   box-shadow: var(--shadow);
 }
 
-.product-media {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
+.value-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  color: var(--clay);
+  background:
+    repeating-linear-gradient(0deg, rgba(180, 85, 45, 0.08) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(180, 85, 45, 0.08) 0 1px, transparent 1px 4px),
+    var(--linen);
+  border: 1.5px dashed var(--thread-soft);
 }
 
-.product-media img {
+.value-mark svg {
+  width: 20px;
+  height: 20px;
+}
+
+.value h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.value p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+/* ============================================================
+   Festival Section
+   ============================================================ */
+.festival-section {
+  background:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.05) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.05) 0 1px, transparent 1px 5px),
+    var(--linen-deep);
+  border-top: 2px dashed rgba(138, 122, 92, 0.35);
+  border-bottom: 2px dashed rgba(138, 122, 92, 0.35);
+}
+
+.festival-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.festival-image-wrapper {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.festival-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s var(--ease);
+  display: block;
 }
 
-.product-card:hover .product-media img {
-  transform: scale(1.07);
-}
-
-/* Fabric texture overlay on product images */
-.product-media::after {
-  content: "";
+.festival-badge {
   position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-.fabric-tag {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 6px 14px;
-  font-size: 0.72rem;
+  top: 20px;
+  left: 20px;
+  padding: 8px 18px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cream);
-  background: rgba(43, 36, 28, 0.72);
-  border: 1px dashed var(--thread);
-  border-radius: 3px;
-  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  border: 1px dashed var(--thread-soft);
 }
 
-body.dark-theme .fabric-tag {
-  color: #171613;
-  background: #ffffff;
+.festival-info .eyebrow {
+  margin-bottom: 14px;
 }
 
-.product-info {
-  padding: 22px 24px 26px;
-}
-
-.product-info h3 {
+.festival-info h2 {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.product-info p {
-  color: var(--ink-soft);
-  font-size: 0.92rem;
+  line-height: 1.12;
   margin-bottom: 18px;
 }
 
-.product-meta {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.price {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--clay);
-}
-
-.thread-line {
-  flex: 1;
-  height: 1px;
-  background: repeating-linear-gradient(90deg, var(--thread-soft) 0 6px, transparent 6px 12px);
-}
-
-.mini-link {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink);
-  border-bottom: 1.5px solid var(--clay);
-  padding-bottom: 2px;
-  transition: color 0.3s, border-color 0.3s;
-}
-
-.mini-link:hover {
-  color: var(--clay);
-  border-color: var(--ink);
+.festival-info p {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
 
 /* ============================================================
@@ -1098,6 +1320,18 @@ footer {
 }
 
 /* ============================================================
+   Focus visible for accessibility
+   ============================================================ */
+*:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}
+
+.newsletter input:focus-visible {
+  outline: 2px solid #e8a87c;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 900px) {
@@ -1107,6 +1341,14 @@ footer {
     text-align: center;
   }
 
+  .hero-visual {
+    flex-direction: column;
+  }
+
+  .swatch-stack {
+    width: min(420px, 90%);
+  }
+
   .lede {
     margin-left: auto;
     margin-right: auto;
@@ -1114,6 +1356,28 @@ footer {
 
   .hero-actions {
     justify-content: center;
+  }
+
+  .festival-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .festival-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+  .festival-info {
+    text-align: center;
+  }
+
+  .festival-info h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+  }
+
+  .lede {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-visual {
@@ -1131,6 +1395,15 @@ footer {
 }
 
 @media (max-width: 640px) {
+  .assurance-bar {
+    font-size: 0.76rem;
+    padding: 8px 16px;
+  }
+
+  .topbar {
+    top: 38px;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;

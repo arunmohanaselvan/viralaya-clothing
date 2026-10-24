@@ -5,16 +5,12 @@
 // --- Mobile menu toggle ---
 const toggleButton = document.querySelector('.menu-toggle');
 const themeToggle = document.querySelector('.theme-toggle');
-const themeIcon = document.querySelector('.theme-icon');
 const body = document.body;
 
 function setTheme(theme) {
   const isDark = theme === 'dark';
   body.classList.toggle('dark-theme', isDark);
   localStorage.setItem('viralaya-theme', theme);
-  if (themeIcon) {
-    themeIcon.textContent = isDark ? '☀' : '☾';
-  }
   if (themeToggle) {
     themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
@@ -106,4 +102,133 @@ updateActiveNav();
 const year = document.querySelector('#year');
 if (year) {
   year.textContent = new Date().getFullYear();
+}
+
+// --- Festival Section Initialization ---
+function initFestivalSection() {
+  const config = window.VIRALAYA_FESTIVAL;
+  if (!config || !config.enabled) {
+    return; // Section stays hidden via HTML 'hidden' attribute
+  }
+
+  const section = document.getElementById('festival');
+  if (!section) return;
+
+  // Show the section
+  section.hidden = false;
+
+  // Populate content
+  const img = document.getElementById('festival-section-img');
+  const badge = document.getElementById('festival-badge');
+  const heading = document.getElementById('festival-heading');
+  const tagline = document.getElementById('festival-tagline');
+  const desc = document.getElementById('festival-description');
+  const cta = document.getElementById('festival-cta');
+
+  if (img) {
+    img.src = config.image || '';
+    img.alt = config.alt || '';
+  }
+  if (badge) {
+    badge.textContent = config.name || 'Festival';
+  }
+  if (heading) {
+    heading.textContent = `${config.name || 'Festival'} Collection`;
+  }
+  if (tagline) {
+    tagline.textContent = `${config.name || 'Festival'} Edition`;
+  }
+  if (desc) {
+    desc.textContent = config.description || 'Discover our curated festive edit — thoughtful pieces for the season.';
+  }
+  if (cta) {
+    cta.querySelector('span').textContent = config.ctaText || 'Explore Collection';
+    cta.href = config.ctaLink || '#craft';
+  }
+}
+
+// Initialize festival section when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initFestivalSection);
+} else {
+  initFestivalSection();
+}
+
+// --- Photo Slider ---
+const photoSlider = document.querySelector('.photo-slider');
+if (photoSlider) {
+  const track = photoSlider.querySelector('.photo-track');
+  const prevBtn = photoSlider.querySelector('.slider-nav.prev');
+  const nextBtn = photoSlider.querySelector('.slider-nav.next');
+  const items = track.querySelectorAll('.photo-item');
+
+  let currentIndex = 0;
+  const totalItems = items.length;
+
+  function updateSlider() {
+    const offset = -currentIndex * 100;
+    track.style.transform = `translateX(${offset}%)`;
+  }
+
+  // Handle image loading for slider
+  items.forEach((item) => {
+    const img = item.querySelector('img');
+    if (img) {
+      if (img.complete) {
+        img.classList.add('loaded');
+        item.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => {
+          img.classList.add('loaded');
+          item.classList.add('loaded');
+        });
+        img.addEventListener('error', () => {
+          img.classList.add('loaded');
+          item.classList.add('loaded');
+        });
+      }
+    }
+  });
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateSlider();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateSlider();
+    });
+  }
+
+  // Add keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && prevBtn) {
+      prevBtn.click();
+    } else if (e.key === 'ArrowRight' && nextBtn) {
+      nextBtn.click();
+    }
+  });
+}
+
+// --- Festival image loading ---
+const festivalImg = document.getElementById('festival-section-img');
+if (festivalImg) {
+  const wrapper = festivalImg.closest('.festival-image-wrapper');
+  if (festivalImg.complete) {
+    festivalImg.classList.add('loaded');
+    if (wrapper) wrapper.classList.add('loaded');
+  } else {
+    festivalImg.addEventListener('load', () => {
+      festivalImg.classList.add('loaded');
+      if (wrapper) wrapper.classList.add('loaded');
+    });
+    festivalImg.addEventListener('error', () => {
+      festivalImg.classList.add('loaded');
+      if (wrapper) wrapper.classList.add('loaded');
+    });
+  }
 }
