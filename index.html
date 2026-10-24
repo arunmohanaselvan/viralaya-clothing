@@ -4,107 +4,233 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Viralaya | Modern Clothing</title>
+    <title>Viralaya | Woven for Life</title>
     <meta name="description"
         content="Viralaya offers contemporary clothing designed for comfort, confidence, and everyday style." />
+    <meta name="theme-color" content="#432d1d" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+    <!-- Curtain reveal on page load -->
+    <div class="curtain" aria-hidden="true">
+        <div class="curtain-panel left"></div>
+        <div class="curtain-panel right"></div>
+    </div>
+
+    <!-- Floating thread decorations -->
+    <div class="threads" aria-hidden="true">
+        <span class="thread t1"></span>
+        <span class="thread t2"></span>
+        <span class="thread t3"></span>
+    </div>
+
     <header class="topbar">
-        <a class="brand" href="#">Viralaya</a>
+        <a class="brand" href="#" aria-label="Viralaya home">
+            <img class="brand-logo" src="logo.png" alt="Viralaya logo" />
+        </a>
         <nav class="nav-links" aria-label="Primary navigation">
             <a href="#shop">Shop</a>
+            <a href="#craft">Craft</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="header-actions">
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="theme-icon">☀</span>
+            </button>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-content">
-                <p class="eyebrow">New Season • 2026</p>
-                <h1>Elevate your everyday look.</h1>
-                <p>
-                    Discover statement essentials crafted for comfort, confidence, and effortless style.
+            <div class="hero-weave" aria-hidden="true"></div>
+            <div class="hero-content reveal">
+                <p class="eyebrow stitched">New Season • 2026</p>
+                <h1>
+                    <span class="line"><span>Woven with</span></span>
+                    <span class="line"><span class="accent">intention.</span></span>
+                    <span class="line"><span>Worn with ease.</span></span>
+                </h1>
+                <p class="lede">
+                    Statement essentials cut from premium fabrics — crafted for comfort,
+                    confidence, and effortless everyday style.
                 </p>
                 <div class="hero-actions">
-                    <a class="button primary" href="#shop">Shop new arrivals</a>
-                    <a class="button secondary" href="#about">Why Viralaya</a>
+                    <a class="button primary" href="#shop"><span>Shop new arrivals</span></a>
+                    <a class="button secondary" href="#craft"><span>Our craft</span></a>
                 </div>
             </div>
-            <div class="hero-card">
-                <p class="eyebrow">Editor’s pick</p>
-                <h2>Signature layers for every mood</h2>
-                <p>Lightweight tailoring, elevated basics, and polished outerwear in one curated drop.</p>
+            <div class="hero-visual reveal" aria-hidden="true">
+                <div class="swatch-stack">
+                    <div class="swatch s1"></div>
+                    <div class="swatch s2"></div>
+                    <div class="swatch s3">
+                        <p class="eyebrow">Editor’s pick</p>
+                        <h2>Signature layers for every mood</h2>
+                        <p>Lightweight tailoring &amp; polished outerwear in one curated drop.</p>
+                        <span class="pin" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-wave" aria-hidden="true">
+                <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+                    <path d="M0,48 C240,90 480,6 720,42 C960,78 1200,10 1440,52 L1440,90 L0,90 Z"></path>
+                </svg>
             </div>
         </section>
 
+        <!-- Ribbon marquee -->
+        <div class="ribbon" aria-hidden="true">
+            <div class="ribbon-track">
+                <span>Hand-finished seams</span><span>✦</span>
+                <span>Organic cotton</span><span>✦</span>
+                <span>Slow fashion</span><span>✦</span>
+                <span>Loomed with love</span><span>✦</span>
+                <span>Hand-finished seams</span><span>✦</span>
+                <span>Organic cotton</span><span>✦</span>
+                <span>Slow fashion</span><span>✦</span>
+                <span>Loomed with love</span><span>✦</span>
+            </div>
+        </div>
+
         <section id="shop" class="products">
-            <div class="section-heading">
-                <p class="eyebrow">Featured pieces</p>
-                <h2>Fresh styles for the modern wardrobe</h2>
+            <div class="section-heading reveal">
+                <p class="eyebrow stitched">Signature fabrics</p>
+                <h2>Materials chosen for comfort, texture, and longevity</h2>
             </div>
             <div class="product-grid">
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80"
-                        alt="Model wearing a relaxed jacket" />
+                <article class="product-card reveal">
+                    <div class="product-media">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80"
+                            alt="Close-up of woven cotton fabric" loading="lazy" />
+                        <span class="fabric-tag">Cotton</span>
+                    </div>
                     <div class="product-info">
-                        <p class="product-tag">Outerwear</p>
-                        <h3>Contour Jacket</h3>
-                        <p>Structured comfort with a modern silhouette.</p>
-                        <span>$128</span>
+                        <h3>Organic Cotton Twill</h3>
+                        <p>Soft, breathable fabric with a refined woven finish for everyday layering.</p>
+                        <div class="product-meta">
+                            <span class="price">$42</span>
+                            <span class="thread-line" aria-hidden="true"></span>
+                            <a href="#" class="mini-link">View</a>
+                        </div>
                     </div>
                 </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
-                        alt="Minimalist outfit with a knit top" />
+                <article class="product-card reveal" style="--delay: .12s">
+                    <div class="product-media">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80"
+                            alt="Close-up of textured linen fabric" loading="lazy" />
+                        <span class="fabric-tag">Linen</span>
+                    </div>
                     <div class="product-info">
-                        <p class="product-tag">Essentials</p>
-                        <h3>Soft Knit Set</h3>
-                        <p>Layer-ready textures designed for all-day ease.</p>
-                        <span>$84</span>
+                        <h3>Washed Linen Blend</h3>
+                        <p>Lightweight and airy fabric designed for breezy, elevated silhouettes.</p>
+                        <div class="product-meta">
+                            <span class="price">$36</span>
+                            <span class="thread-line" aria-hidden="true"></span>
+                            <a href="#" class="mini-link">View</a>
+                        </div>
                     </div>
                 </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80"
-                        alt="Stylish model wearing a relaxed dress" />
+                <article class="product-card reveal" style="--delay: .24s">
+                    <div class="product-media">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
+                            alt="Close-up of wool textile texture" loading="lazy" />
+                        <span class="fabric-tag">Wool</span>
+                    </div>
                     <div class="product-info">
-                        <p class="product-tag">Statement</p>
-                        <h3>Flow Midi Dress</h3>
-                        <p>Fluid movement with clean lines and rich color.</p>
-                        <span>$96</span>
+                        <h3>Merino Wool Knit</h3>
+                        <p>Warm, structured texture with a soft hand feel and premium drape.</p>
+                        <div class="product-meta">
+                            <span class="price">$58</span>
+                            <span class="thread-line" aria-hidden="true"></span>
+                            <a href="#" class="mini-link">View</a>
+                        </div>
                     </div>
                 </article>
+            </div>
+        </section>
+
+        <section id="craft" class="craft">
+            <div class="section-heading reveal">
+                <p class="eyebrow stitched">The Viralaya way</p>
+                <h2>Every thread tells a story</h2>
+            </div>
+            <div class="craft-grid">
+                <div class="craft-card reveal">
+                    <div class="craft-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <circle cx="12" cy="12" r="8" />
+                            <path d="M12 4v16M4 12h16M6.3 6.3l11.4 11.4M17.7 6.3 6.3 17.7" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3>Loomed slowly</h3>
+                    <p>Small-batch weaving preserves texture, drape, and character in every panel.</p>
+                </div>
+                <div class="craft-card reveal" style="--delay: .12s">
+                    <div class="craft-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <path d="M3 17c4-8 14-8 18 0" stroke-linecap="round" stroke-dasharray="3 3" />
+                            <path d="M3 12c4-8 14-8 18 0" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3>Stitched to last</h3>
+                    <p>Reinforced seams and hand-finished hems built for years of wear.</p>
+                </div>
+                <div class="craft-card reveal" style="--delay: .24s">
+                    <div class="craft-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <path d="M12 3c3 4 6 6.5 6 10a6 6 0 1 1-12 0c0-3.5 3-6 6-10Z" />
+                        </svg>
+                    </div>
+                    <h3>Dyed naturally</h3>
+                    <p>Plant-based dyes create rich, earthy tones that soften beautifully over time.</p>
+                </div>
             </div>
         </section>
 
         <section id="about" class="about">
-            <div class="about-card">
-                <p class="eyebrow">Why choose Viralaya</p>
+            <div class="about-card reveal">
+                <span class="corner-stitch tl" aria-hidden="true"></span>
+                <span class="corner-stitch tr" aria-hidden="true"></span>
+                <span class="corner-stitch bl" aria-hidden="true"></span>
+                <span class="corner-stitch br" aria-hidden="true"></span>
+                <p class="eyebrow stitched">Why choose Viralaya</p>
                 <h2>Crafted for a confident, effortless wardrobe.</h2>
                 <p>
-                    We blend timeless silhouettes with modern detailing and premium fabrics so you can dress beautifully
-                    without compromise.
+                    We blend timeless silhouettes with modern detailing and premium fabrics so you can
+                    dress beautifully without compromise.
                 </p>
             </div>
         </section>
 
         <section id="contact" class="newsletter">
-            <div>
-                <p class="eyebrow">Stay in the loop</p>
-                <h2>Get first access to drops and exclusive offers.</h2>
+            <div class="newsletter-inner reveal">
+                <div>
+                    <p class="eyebrow stitched">Stay in the loop</p>
+                    <h2>Get first access to drops and exclusive offers.</h2>
+                </div>
+                <form>
+                    <input type="email" placeholder="Enter your email" aria-label="Email address" required />
+                    <button type="submit" class="button primary"><span>Join now</span></button>
+                </form>
             </div>
-            <form>
-                <input type="email" placeholder="Enter your email" aria-label="Email address" />
-                <button type="submit">Join now</button>
-            </form>
         </section>
     </main>
 
     <footer>
-        <p>© <span id="year"></span> Viralaya. Designed for modern living.</p>
+        <div class="footer-stitch" aria-hidden="true"></div>
+        <p>© <span id="year"></span> Viralaya. Woven for modern living.</p>
     </footer>
 
     <script src="script.js"></script>

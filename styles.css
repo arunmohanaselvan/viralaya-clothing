@@ -1,24 +1,79 @@
+/* ============================================================
+   Viralaya — Fabric / Loom Theme
+   ============================================================ */
+
 :root {
-  --bg: #fffaf6;
-  --surface: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --accent: #8b5e3c;
-  --accent-soft: #f6e9de;
-  --border: #eee1d6;
+  --linen: #f4efe6;
+  --linen-deep: #e9e1d2;
+  --linen-dark: #d9cfbc;
+  --thread: #8a7a5c;
+  --thread-soft: #b3a68c;
+  --ink: #2b241c;
+  --ink-soft: #5c5244;
+  --clay: #b4552d;
+  --clay-deep: #93401f;
+  --sage: #7d8a6a;
+  --cream: #fbf8f1;
+  --shadow: 0 18px 40px rgba(43, 36, 28, 0.12);
+  --radius: 18px;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --header-bg: rgba(244, 239, 230, 0.82);
+  --nav-bg: var(--cream);
+  --toggle-bg: rgba(255, 255, 255, 0.5);
+  --toggle-border: rgba(138, 122, 92, 0.4);
+}
+
+body.dark-theme {
+  --linen: #171613;
+  --linen-deep: #221f1a;
+  --linen-dark: #2e2a25;
+  --thread: #d0b992;
+  --thread-soft: #bda47b;
+  --ink: #f4efe6;
+  --ink-soft: #d9d3ca;
+  --clay: #e28d62;
+  --clay-deep: #cf7348;
+  --sage: #b2c09a;
+  --cream: #1d1a17;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  --header-bg: rgba(23, 22, 19, 0.78);
+  --nav-bg: #201d1a;
+  --toggle-bg: rgba(255, 255, 255, 0.04);
+  --toggle-border: rgba(208, 185, 146, 0.45);
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-body);
+  background: var(--linen);
+  color: var(--ink);
   line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
+  overflow-x: hidden;
+  /* Subtle woven fabric texture over the whole page */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.045) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.045) 0 1px, transparent 1px 4px);
+}
+
+::selection {
+  background: var(--clay);
+  color: var(--cream);
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 a {
@@ -26,257 +81,1108 @@ a {
   text-decoration: none;
 }
 
-img {
-  display: block;
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 16px;
+/* ============================================================
+   Curtain page-load reveal
+   ============================================================ */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  pointer-events: none;
 }
 
+.curtain-panel {
+  flex: 1;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 2px, transparent 2px 6px),
+    var(--clay);
+  transform: scaleX(1);
+  transform-origin: left;
+  animation: curtain-close 1.1s var(--ease) forwards;
+}
+
+.curtain-panel.right {
+  transform-origin: right;
+  animation-delay: 0.05s;
+}
+
+@keyframes curtain-close {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* ============================================================
+   Floating threads
+   ============================================================ */
+.threads {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.thread {
+  position: absolute;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--thread-soft), transparent);
+  opacity: 0.5;
+  animation: thread-drift 9s ease-in-out infinite;
+}
+
+.t1 {
+  width: 220px;
+  top: 18%;
+  left: -240px;
+  transform: rotate(8deg);
+}
+
+.t2 {
+  width: 160px;
+  top: 62%;
+  left: -180px;
+  transform: rotate(-6deg);
+  animation-delay: 2.5s;
+}
+
+.t3 {
+  width: 260px;
+  top: 84%;
+  left: -280px;
+  transform: rotate(12deg);
+  animation-delay: 5s;
+}
+
+@keyframes thread-drift {
+  0% {
+    transform: translateX(0) rotate(8deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(calc(100vw + 500px)) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+.t2 {
+  animation-name: thread-drift-2;
+}
+
+.t3 {
+  animation-name: thread-drift-3;
+}
+
+@keyframes thread-drift-2 {
+  0% {
+    transform: translateX(0) rotate(-6deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(calc(100vw + 500px)) rotate(-6deg);
+    opacity: 0;
+  }
+}
+
+@keyframes thread-drift-3 {
+  0% {
+    transform: translateX(0) rotate(12deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(calc(100vw + 500px)) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   Topbar
+   ============================================================ */
 .topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 5%;
-  position: sticky;
+  position: fixed;
   top: 0;
-  background: rgba(255, 250, 246, 0.95);
-  backdrop-filter: blur(8px);
-  z-index: 10;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px clamp(20px, 5vw, 64px);
+  background: var(--header-bg);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px dashed rgba(138, 122, 92, 0.35);
+  animation: topbar-in 1s var(--ease) 0.9s both;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-bg);
+  color: var(--ink);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease), border-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.theme-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+@keyframes topbar-in {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .brand {
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.brand-logo {
+  display: block;
+  width: clamp(180px, 24vw, 340px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(43, 36, 28, 0.08));
 }
 
 .nav-links {
   display: flex;
-  gap: 1.4rem;
-  color: var(--muted);
+  gap: clamp(18px, 3vw, 40px);
+}
+
+.nav-links a {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 6px 2px;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--clay);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease);
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--clay);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .menu-toggle {
   display: none;
-  border: none;
-  background: transparent;
-  font-size: 1.4rem;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 0;
   cursor: pointer;
+  padding: 8px;
 }
 
-.hero,
-.products,
-.about,
-.newsletter {
-  padding: 4.5rem 5%;
+.menu-toggle span {
+  width: 26px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.35s var(--ease), opacity 0.3s;
 }
 
+body.nav-open .menu-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+body.nav-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+body.nav-open .menu-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
 .hero {
+  position: relative;
+  min-height: 100svh;
   display: grid;
-  grid-template-columns: 1.3fr 0.8fr;
-  gap: 2rem;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
+  gap: 40px;
+  padding: 140px clamp(20px, 5vw, 64px) 90px;
+  overflow: hidden;
 }
 
-.hero h1 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  margin-bottom: 1rem;
+/* Woven cross-hatch texture behind hero */
+.hero-weave {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.07) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.07) 0 1px, transparent 1px 5px),
+    radial-gradient(ellipse at 70% 30%, rgba(180, 85, 45, 0.08), transparent 55%);
+  animation: weave-shift 14s linear infinite;
 }
 
-.hero p {
-  color: var(--muted);
-  font-size: 1.05rem;
-  max-width: 650px;
+@keyframes weave-shift {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 0 40px, 40px 0, 0 0;
+  }
+}
+
+.hero-content,
+.hero-visual {
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
   font-size: 0.8rem;
-  letter-spacing: 0.24em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 700;
-  margin-bottom: 0.7rem;
+  color: var(--clay);
+  margin-bottom: 18px;
+}
+
+/* Dashed "stitched" underline for eyebrows */
+.eyebrow.stitched {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed rgba(180, 85, 45, 0.45);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 500;
+  line-height: 1.05;
+  margin-bottom: 26px;
+}
+
+.hero h1 .line {
+  display: block;
+  overflow: hidden;
+}
+
+.hero h1 .line > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: line-up 1s var(--ease) forwards;
+  animation-delay: calc(1.1s + var(--i, 0) * 0.12s);
+}
+
+.hero h1 .line:nth-child(1) > span {
+  --i: 0;
+}
+
+.hero h1 .line:nth-child(2) > span {
+  --i: 1;
+}
+
+.hero h1 .line:nth-child(3) > span {
+  --i: 2;
+}
+
+@keyframes line-up {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero h1 .accent {
+  color: var(--clay);
+  font-style: italic;
+}
+
+.lede {
+  max-width: 460px;
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  margin-bottom: 36px;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 16px;
 }
 
+/* ============================================================
+   Buttons — fabric patch style
+   ============================================================ */
 .button {
-  display: inline-block;
-  padding: 0.85rem 1.2rem;
-  border-radius: 999px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 0.9rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.button span {
+  position: relative;
+  z-index: 1;
 }
 
 .button.primary {
-  background: var(--accent);
-  color: white;
+  background: var(--clay);
+  color: var(--cream);
+  box-shadow: 0 10px 24px rgba(180, 85, 45, 0.3);
+}
+
+.button.primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 6px);
+  transition: transform 0.5s var(--ease);
+}
+
+.button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(180, 85, 45, 0.38);
+}
+
+.button.primary:hover::before {
+  transform: translateY(4px);
 }
 
 .button.secondary {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px dashed var(--thread);
 }
 
-.hero-card,
-.about-card,
-.newsletter {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.04);
+.button.secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--linen-deep);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease);
 }
 
-.hero-card {
-  padding: 2rem;
+.button.secondary:hover {
+  transform: translateY(-3px);
 }
 
-.hero-card h2 {
-  margin-bottom: 0.8rem;
-  font-size: 1.5rem;
+.button.secondary:hover::after {
+  transform: scaleY(1);
+}
+
+/* ============================================================
+   Hero visual — fabric swatch stack
+   ============================================================ */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.swatch-stack {
+  position: relative;
+  width: min(420px, 90%);
+  aspect-ratio: 4 / 5;
+}
+
+.swatch {
+  position: absolute;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.6s var(--ease);
+}
+
+.swatch.s1 {
+  inset: 0 8% 0 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0 2px, transparent 2px 7px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 2px, transparent 2px 7px),
+    linear-gradient(135deg, #c96a3f, #93401f);
+  transform: rotate(-6deg);
+  animation: swatch-float 7s ease-in-out infinite;
+}
+
+.swatch.s2 {
+  inset: 10% 0 0 12%;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.09) 0 2px, transparent 2px 7px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.09) 0 2px, transparent 2px 7px),
+    linear-gradient(135deg, #8b9a78, #5f6f50);
+  transform: rotate(5deg);
+  animation: swatch-float 7s ease-in-out 1.2s infinite;
+}
+
+.swatch.s3 {
+  inset: 18% 4% 6% 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: clamp(24px, 4vw, 44px);
+  background:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
+    var(--cream);
+  border: 1px solid rgba(138, 122, 92, 0.25);
+  transform: rotate(-1deg);
+  animation: swatch-float 7s ease-in-out 0.6s infinite;
+}
+
+.swatch.s3 h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.swatch.s3 p:not(.eyebrow) {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+@keyframes swatch-float {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--rot, 0deg));
+  }
+}
+
+.swatch.s1 {
+  --rot: -6deg;
+}
+
+.swatch.s2 {
+  --rot: 5deg;
+}
+
+.swatch.s3 {
+  --rot: -1deg;
+}
+
+/* Tailor's pin on the top swatch */
+.pin {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffd9a0, #c98a3d 70%);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 34px;
+  background: linear-gradient(180deg, #c98a3d, rgba(201, 138, 61, 0.2));
+  transform: translate(-50%, -50%) rotate(35deg);
+  transform-origin: top;
+}
+
+/* Hero wave divider */
+.hero-wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  line-height: 0;
+}
+
+.hero-wave svg {
+  width: 100%;
+  height: 70px;
+  fill: var(--linen);
+  animation: wave-drift 9s ease-in-out infinite;
+}
+
+@keyframes wave-drift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ============================================================
+   Ribbon marquee
+   ============================================================ */
+.ribbon {
+  background: var(--ink);
+  color: var(--cream);
+  overflow: hidden;
+  padding: 14px 0;
+  border-top: 2px dashed var(--thread-soft);
+  border-bottom: 2px dashed var(--thread-soft);
+}
+
+.ribbon-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.ribbon-track span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ribbon-track span:nth-child(even) {
+  color: var(--clay);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+section {
+  padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 64px);
 }
 
 .section-heading {
-  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto clamp(40px, 6vw, 70px);
 }
 
 .section-heading h2,
 .about-card h2,
 .newsletter h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.12;
 }
 
+/* ============================================================
+   Products
+   ============================================================ */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .product-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 1rem;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border: 1px solid rgba(138, 122, 92, 0.22);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(43, 36, 28, 0.06);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow);
+}
+
+.product-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.product-card:hover .product-media img {
+  transform: scale(1.07);
+}
+
+/* Fabric texture overlay on product images */
+.product-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.fabric-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(43, 36, 28, 0.72);
+  border: 1px dashed var(--thread);
+  border-radius: 3px;
+  backdrop-filter: blur(4px);
+}
+
+body.dark-theme .fabric-tag {
+  color: #171613;
+  background: #ffffff;
 }
 
 .product-info {
-  padding-top: 1rem;
-}
-
-.product-tag {
-  font-size: 0.8rem;
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
+  padding: 22px 24px 26px;
 }
 
 .product-info h3 {
-  margin-bottom: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
 .product-info p {
-  color: var(--muted);
-  margin-bottom: 0.7rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-bottom: 18px;
 }
 
-.product-info span {
-  font-weight: 700;
+.product-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--clay);
+}
+
+.thread-line {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--thread-soft) 0 6px, transparent 6px 12px);
+}
+
+.mini-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--clay);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.mini-link:hover {
+  color: var(--clay);
+  border-color: var(--ink);
+}
+
+/* ============================================================
+   Craft
+   ============================================================ */
+.craft {
+  background:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.05) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.05) 0 1px, transparent 1px 5px),
+    var(--linen-deep);
+  border-top: 2px dashed rgba(138, 122, 92, 0.35);
+  border-bottom: 2px dashed rgba(138, 122, 92, 0.35);
+}
+
+.craft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(20px, 3vw, 36px);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.craft-card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  border: 1px solid rgba(138, 122, 92, 0.22);
+  padding: 38px 30px;
+  text-align: center;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.craft-card:hover {
+  transform: translateY(-8px) rotate(-0.5deg);
+  box-shadow: var(--shadow);
+}
+
+.craft-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  color: var(--clay);
+  background:
+    repeating-linear-gradient(0deg, rgba(180, 85, 45, 0.08) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(180, 85, 45, 0.08) 0 1px, transparent 1px 4px),
+    var(--linen);
+  border: 1.5px dashed var(--thread-soft);
+  transition: transform 0.5s var(--ease);
+}
+
+.craft-card:hover .craft-icon {
+  transform: rotate(12deg) scale(1.08);
+}
+
+.craft-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.craft-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.craft-card p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   About — stitched fabric patch card
+   ============================================================ */
+.about {
+  display: grid;
+  place-items: center;
 }
 
 .about-card {
-  padding: 2rem;
+  position: relative;
   max-width: 760px;
+  text-align: center;
+  padding: clamp(40px, 6vw, 70px) clamp(28px, 5vw, 60px);
+  background:
+    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
+    var(--cream);
+  border: 1.5px dashed var(--thread);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
+.about-card h2 {
+  margin-bottom: 18px;
+}
+
+.about-card p:last-child {
+  color: var(--ink-soft);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Corner stitches */
+.corner-stitch {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--clay);
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+.corner-stitch.tl {
+  top: 14px;
+  left: 14px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.corner-stitch.tr {
+  top: 14px;
+  right: 14px;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.corner-stitch.bl {
+  bottom: 14px;
+  left: 14px;
+  border-right: 0;
+  border-top: 0;
+}
+
+.corner-stitch.br {
+  bottom: 14px;
+  right: 14px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* ============================================================
+   Newsletter
+   ============================================================ */
 .newsletter {
-  display: flex;
-  justify-content: space-between;
+  background: var(--ink);
+  color: var(--cream);
+  border-top: 2px dashed var(--thread-soft);
+}
+
+.newsletter-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
   align-items: center;
-  gap: 1.5rem;
-  margin: 0 5% 4rem;
+}
+
+.newsletter .eyebrow {
+  color: #e8a87c;
+}
+
+.newsletter h2 {
+  color: var(--cream);
 }
 
 .newsletter form {
   display: flex;
-  gap: 0.7rem;
-  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .newsletter input {
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  min-width: 240px;
+  flex: 1;
+  min-width: 0;
+  padding: 15px 18px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--cream);
+  background: rgba(251, 248, 241, 0.08);
+  border: 1.5px dashed rgba(251, 248, 241, 0.4);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
 }
 
-.newsletter button {
-  border: none;
-  border-radius: 999px;
-  padding: 0.85rem 1.1rem;
-  background: var(--accent);
-  color: white;
-  cursor: pointer;
+.newsletter input::placeholder {
+  color: rgba(251, 248, 241, 0.55);
 }
 
+.newsletter input:focus {
+  border-color: #e8a87c;
+  background: rgba(251, 248, 241, 0.14);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
 footer {
+  position: relative;
   text-align: center;
-  padding: 1rem 5% 2rem;
-  color: var(--muted);
+  padding: 40px 20px 50px;
+  background: var(--ink);
+  color: rgba(251, 248, 241, 0.7);
+  font-size: 0.9rem;
 }
 
-@media (max-width: 840px) {
+.footer-stitch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--clay) 0 10px, transparent 10px 20px);
+}
+
+/* ============================================================
+   Scroll reveal
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--delay, 0s);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
+    padding-top: 120px;
+    text-align: center;
   }
 
-  .product-grid {
+  .lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    margin-top: 20px;
+  }
+
+  .newsletter-inner {
     grid-template-columns: 1fr;
+    text-align: center;
   }
 
-  .newsletter {
-    flex-direction: column;
-    align-items: flex-start;
+  .newsletter form {
+    justify-content: center;
   }
 }
 
 @media (max-width: 640px) {
-  .menu-toggle {
-    display: inline-block;
-  }
-
   .nav-links {
-    position: absolute;
-    top: 100%;
-    right: 5%;
-    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(320px, 80vw);
     flex-direction: column;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 0.9rem 1rem;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    justify-content: center;
+    gap: 28px;
+    padding: 40px;
+    background: var(--nav-bg);
+    border-left: 2px dashed var(--thread);
+    box-shadow: -20px 0 60px rgba(43, 36, 28, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.5s var(--ease);
   }
 
   body.nav-open .nav-links {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+
+  .menu-toggle {
     display: flex;
   }
 
-  .hero,
-  .products,
-  .about,
-  .newsletter {
-    padding: 3rem 5%;
+  .newsletter form {
+    flex-direction: column;
+  }
+
+  .newsletter input {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
