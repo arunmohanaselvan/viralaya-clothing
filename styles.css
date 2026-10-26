@@ -419,16 +419,12 @@ body.nav-open .menu-toggle span:nth-child(3) {
 }
 
 /* ============================================================
-   Hero
+   Hero — Full-screen photo slider
    ============================================================ */
 .hero {
   position: relative;
   min-height: 100svh;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 40px;
-  padding: 140px clamp(20px, 5vw, 64px) 90px;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -453,10 +449,158 @@ body.nav-open .menu-toggle span:nth-child(3) {
   }
 }
 
-.hero-content,
-.hero-visual {
+/* Photo slider framed by floating fabric swatches */
+.photo-slider-hero {
   position: relative;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--radius) * 0.7);
+  overflow: hidden;
+}
+
+.photo-track-hero {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  height: 100%;
+}
+
+.photo-item-hero {
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.photo-item-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ensure first slide image loads immediately and is visible */
+.photo-item-hero:first-child img {
+  content-visibility: auto;
+  contain-intrinsic-size: 1920px 1080px;
+}
+
+/* Fabric story overlay on slider */
+.hero-visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 6vw, 80px);
+  padding-top: clamp(160px, 22vh, 200px);
+  z-index: 2;
+}
+
+.hero-visual .swatch-stack {
+  position: relative;
+  width: min(100%, 1100px);
+  height: clamp(280px, 70vh, 680px);
+  /* for slide animation */
+  animation: frame-float 7s ease-in-out infinite;
+  animation-play-state: running;
+}
+
+@keyframes frame-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Content section below hero */
+.hero-content-section {
+  padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 64px);
+  background: var(--cream);
+}
+
+.hero-content-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+@media (min-width: 1024px) {
+  .hero-content-inner {
+    text-align: left;
+  }
+}
+
+/* Navigation buttons for hero slider — grey circle, black arrow */
+.slider-nav-hero {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(138, 122, 92, 0.35);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #000;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 5;
+  animation-play-state: paused;
+}
+
+.slider-nav-hero.prev { left: 16px; }
+.slider-nav-hero.next { right: 16px; }
+
+.slider-nav-hero:hover {
+  background: rgba(138, 122, 92, 0.55);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-nav-hero:active {
+  background: rgba(138, 122, 92, 0.75);
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Pagination for hero slider */
+.slider-pagination-hero {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+  animation-play-state: paused;
+}
+
+.pagination-btn-hero {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s, width 0.2s;
+  animation-play-state: paused;
+}
+
+.pagination-btn-hero:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.15);
+}
+
+.pagination-btn-hero.active {
+  background: #fff;
+  width: 32px;
+  border-radius: 6px;
 }
 
 .eyebrow {
@@ -608,25 +752,12 @@ body.nav-open .menu-toggle span:nth-child(3) {
   transform: scaleY(1);
 }
 
-/* ============================================================
-   Hero visual — fabric swatch stack
-   ============================================================ */
-.hero-visual {
-  display: flex;
-  justify-content: center;
-}
-
-.swatch-stack {
-  position: relative;
-  width: min(420px, 90%);
-  aspect-ratio: 4 / 5;
-}
 
 .swatch {
   position: absolute;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  transition: transform 0.6s var(--ease);
+  pointer-events: none;
 }
 
 .swatch.s1 {
@@ -636,7 +767,6 @@ body.nav-open .menu-toggle span:nth-child(3) {
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 2px, transparent 2px 7px),
     linear-gradient(135deg, #c96a3f, #93401f);
   transform: rotate(-6deg);
-  animation: swatch-float 7s ease-in-out infinite;
 }
 
 .swatch.s2 {
@@ -646,101 +776,17 @@ body.nav-open .menu-toggle span:nth-child(3) {
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.09) 0 2px, transparent 2px 7px),
     linear-gradient(135deg, #8b9a78, #5f6f50);
   transform: rotate(5deg);
-  animation: swatch-float 7s ease-in-out 1.2s infinite;
 }
 
 .swatch.s3 {
-  inset: 18% 4% 6% 4%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  padding: clamp(24px, 4vw, 44px);
-  background:
-    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
-    var(--cream);
-  border: 1px solid rgba(138, 122, 92, 0.25);
+  inset: 4% 4% 4%;
+  padding: clamp(8px, 1.5vw, 18px);
+  background: rgba(var(--cream-rgb), 0.96);
   transform: rotate(-1deg);
-  animation: swatch-float 7s ease-in-out 0.6s infinite;
+  pointer-events: auto;
 }
 
-.swatch.s3 h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
-  font-weight: 600;
-  line-height: 1.15;
-}
-
-.swatch.s3 p:not(.eyebrow) {
-  color: var(--ink-soft);
-  font-size: 0.95rem;
-}
-
-@keyframes swatch-float {
-  0%, 100% {
-    transform: translateY(0) rotate(var(--rot, 0deg));
-  }
-  50% {
-    transform: translateY(-14px) rotate(var(--rot, 0deg));
-  }
-}
-
-.swatch.s1 {
-  --rot: -6deg;
-}
-
-.swatch.s2 {
-  --rot: 5deg;
-}
-
-.swatch.s3 {
-  --rot: -1deg;
-}
-
-.swatch.s4 {
-  inset: 18% 4% 6% 4%;
-  display: flex;
-  padding: clamp(16px, 2.5vw, 32px);
-  background:
-    repeating-linear-gradient(0deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(90deg, rgba(138, 122, 92, 0.06) 0 1px, transparent 1px 5px),
-    var(--cream);
-  border: 1px solid rgba(138, 122, 92, 0.25);
-  transform: rotate(-1deg);
-}
-
-/* Photo slider inside swatch s4 - centered */
-.photo-slider {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.photo-track {
-  display: flex;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  width: 100%;
-  height: 100%;
-}
-
-.photo-item {
-  position: relative;
-  min-width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Photo slider (old swatch s4 - remove if unused) */
 .photo-item img {
   width: 100%;
   height: 100%;

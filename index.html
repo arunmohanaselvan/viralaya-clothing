@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,6 +16,11 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" as="image" href="photo-grid/church-of-the-king-j9jZSqfH5YI-unsplash.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="photo-grid/robin-worrall-QaYcPAO6SIc-unsplash.jpg" />
+    <link rel="preload" as="image" href="photo-grid/rodrigo_salomonhc-receptionists-5975962_1920.jpg" />
+    <link rel="preload" as="image" href="photo-grid/voltamax-nurse-2019420_1920.jpg" />
+    <link rel="preload" as="image" href="photo-grid/Professional Uniforms Group Portrait.png" />
 </head>
 
 <!-- Festival configuration (acts like env variable) -->
@@ -46,7 +51,8 @@
     </div>
 
     <div class="assurance-bar">
-        <p>No seasonal drops. No false urgency. Just clothing made to be kept—sourced at the mill, cut for real life, finished by hand.</p>
+        <p>No seasonal drops. No false urgency. Just clothing made to be kept—sourced at the mill, cut for real life,
+            finished by hand.</p>
     </div>
 
     <header class="topbar">
@@ -87,7 +93,74 @@
     <main>
         <section class="hero">
             <div class="hero-weave" aria-hidden="true"></div>
-            <div class="hero-content reveal">
+
+            <div class="hero-visual">
+                <div class="swatch-stack">
+                    <div class="swatch s1"></div>
+                    <div class="swatch s2"></div>
+                    <div class="swatch s3">
+                        <div class="photo-slider-hero" role="region" aria-label="Photo gallery"
+                            aria-roledescription="carousel">
+                            <div class="photo-track-hero">
+                                <div class="photo-item-hero">
+                                    <img src="photo-grid/church-of-the-king-j9jZSqfH5YI-unsplash.jpg"
+                                        alt="Natural linen fabric texture showing organic weave and subtle color variation"
+                                        loading="eager" width="1920" height="1080" />
+                                </div>
+                                <div class="photo-item-hero">
+                                    <img src="photo-grid/robin-worrall-QaYcPAO6SIc-unsplash.jpg"
+                                        alt="Handcrafted garment details showing precise stitching and construction"
+                                        loading="lazy" width="1920" height="1080" />
+                                </div>
+                                <div class="photo-item-hero">
+                                    <img src="photo-grid/rodrigo_salomonhc-receptionists-5975962_1920.jpg"
+                                        alt="Artisan at work demonstrating traditional tailoring techniques"
+                                        loading="lazy" width="1920" height="1080" />
+                                </div>
+                                <div class="photo-item-hero">
+                                    <img src="photo-grid/voltamax-nurse-2019420_1920.jpg"
+                                        alt="Finished garment drape showing natural fabric movement and fit"
+                                        loading="lazy" width="1920" height="1080" />
+                                </div>
+                                <div class="photo-item-hero">
+                                    <img src="photo-grid/Professional Uniforms Group Portrait.png"
+                                        alt="Students and professionals wearing uniforms for school, healthcare, business, hospitality, and industry"
+                                        loading="lazy" width="1983" height="793" />
+                                </div>
+                            </div>
+                            <button class="slider-nav-hero prev" aria-label="Previous photo" type="button">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button class="slider-nav-hero next" aria-label="Next photo" type="button">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 6l6 6-6 6" />
+                                </svg>
+                            </button>
+                            <div class="slider-pagination-hero" aria-label="Photo pagination">
+                                <button class="pagination-btn-hero active" aria-label="Go to photo 1" data-index="0"
+                                    type="button"></button>
+                                <button class="pagination-btn-hero" aria-label="Go to photo 2" data-index="1"
+                                    type="button"></button>
+                                <button class="pagination-btn-hero" aria-label="Go to photo 3" data-index="2"
+                                    type="button"></button>
+                                <button class="pagination-btn-hero" aria-label="Go to photo 4" data-index="3"
+                                    type="button"></button>
+                                <button class="pagination-btn-hero" aria-label="Go to photo 5" data-index="4"
+                                    type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content section below hero -->
+        <section class="hero-content-section reveal">
+            <div class="hero-content-inner">
                 <p class="eyebrow stitched">Clothing, Considered</p>
                 <h1>
                     <span class="line"><span>Stop buying clothes</span></span>
@@ -103,57 +176,9 @@
                     <a class="button secondary" href="#values"><span>What We Stand For</span></a>
                 </div>
                 <p class="hero-trust" style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--ink-soft);">
-                    <span style="font-weight: 600;">No seasonal drops.</span> No false urgency. Just clothing made to be kept.
+                    <span style="font-weight: 600;">No seasonal drops.</span> No false urgency. Just clothing made to be
+                    kept.
                 </p>
-            </div>
-            <div class="hero-visual reveal" aria-hidden="true">
-                <div class="swatch-stack">
-                    <div class="swatch s1"></div>
-                    <div class="swatch s2"></div>
-                    <div class="swatch s4" aria-hidden="true">
-                        <div class="photo-slider" role="region" aria-label="Photo gallery" aria-roledescription="carousel">
-                            <div class="photo-track">
-                                <div class="photo-item">
-                                    <img src="photo-grid/church-of-the-king-j9jZSqfH5YI-unsplash.jpg"
-                                        alt="Natural linen fabric texture showing organic weave and subtle color variation" loading="lazy" />
-                                </div>
-                                <div class="photo-item">
-                                    <img src="photo-grid/robin-worrall-QaYcPAO6SIc-unsplash.jpg"
-                                        alt="Handcrafted garment details showing precise stitching and construction" loading="lazy" />
-                                </div>
-                                <div class="photo-item">
-                                    <img src="photo-grid/rodrigo_salomonhc-receptionists-5975962_1920.jpg"
-                                        alt="Artisan at work demonstrating traditional tailoring techniques" loading="lazy" />
-                                </div>
-                                <div class="photo-item">
-                                    <img src="photo-grid/voltamax-nurse-2019420_1920.jpg"
-                                        alt="Finished garment drape showing natural fabric movement and fit" loading="lazy" />
-                                </div>
-                            </div>
-                            <button class="slider-nav prev" aria-label="Previous photo" type="button">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </button>
-                            <button class="slider-nav next" aria-label="Next photo" type="button">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M9 18l6-6-6-6"/>
-                                </svg>
-                            </button>
-                            <div class="slider-pagination" aria-label="Photo pagination">
-                                <button class="pagination-btn active" aria-label="Go to photo 1" data-index="0" type="button"></button>
-                                <button class="pagination-btn" aria-label="Go to photo 2" data-index="1" type="button"></button>
-                                <button class="pagination-btn" aria-label="Go to photo 3" data-index="2" type="button"></button>
-                                <button class="pagination-btn" aria-label="Go to photo 4" data-index="3" type="button"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-wave" aria-hidden="true">
-                <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
-                    <path d="M0,48 C240,90 480,6 720,42 C960,78 1200,10 1440,52 L1440,90 L0,90 Z"></path>
-                </svg>
             </div>
         </section>
 
@@ -204,7 +229,10 @@
                         </svg>
                     </div>
                     <h3>Fabric first — not last</h3>
-                    <p>Most brands design the silhouette, then source whatever fabric hits the price point. We reverse it: we visit mills, feel the fibers, and only then design around what the material does best. The result? Clothing that breathes, moves, and softens with age instead of pilling after three washes.</p>
+                    <p>Most brands design the silhouette, then source whatever fabric hits the price point. We reverse
+                        it: we visit mills, feel the fibers, and only then design around what the material does best.
+                        The result? Clothing that breathes, moves, and softens with age instead of pilling after three
+                        washes.</p>
                 </article>
                 <article class="value reveal" style="--delay: .08s">
                     <div class="value-mark" aria-hidden="true">
@@ -215,7 +243,9 @@
                         </svg>
                     </div>
                     <h3>Cut for your life, not the hanger</h3>
-                    <p>Standard sizing is built for a mannequin standing still. We pattern for bodies in motion—reaching, sitting, rushing, resting. No pulling at the shoulders when you drive. No gaping when you bend. The garment yields to you.</p>
+                    <p>Standard sizing is built for a mannequin standing still. We pattern for bodies in
+                        motion—reaching, sitting, rushing, resting. No pulling at the shoulders when you drive. No
+                        gaping when you bend. The garment yields to you.</p>
                 </article>
                 <article class="value reveal" style="--delay: .16s">
                     <div class="value-mark" aria-hidden="true">
@@ -226,7 +256,9 @@
                         </svg>
                     </div>
                     <h3>Details that do the work</h3>
-                    <p>Bound seams that won’t chafe. Buttons cross-stitched so they stay. Pockets placed where your hands actually go. These aren’t decorative—they’re why a shirt still looks sharp after 200 wears while others fray at the cuff.</p>
+                    <p>Bound seams that won’t chafe. Buttons cross-stitched so they stay. Pockets placed where your
+                        hands actually go. These aren’t decorative—they’re why a shirt still looks sharp after 200 wears
+                        while others fray at the cuff.</p>
                 </article>
                 <article class="value reveal" style="--delay: .24s">
                     <div class="value-mark" aria-hidden="true">
@@ -236,7 +268,9 @@
                         </svg>
                     </div>
                     <h3>Checked by human hands</h3>
-                    <p>Every piece is inspected before it leaves our workshop—seam tension, button security, fabric flaws. We catch what machines miss. If we wouldn’t wear it ourselves, it doesn’t ship. Period.</p>
+                    <p>Every piece is inspected before it leaves our workshop—seam tension, button security, fabric
+                        flaws. We catch what machines miss. If we wouldn’t wear it ourselves, it doesn’t ship. Period.
+                    </p>
                 </article>
             </div>
         </section>
@@ -255,7 +289,10 @@
                         </svg>
                     </div>
                     <h3>1. Source at the source</h3>
-                    <p>We don't order from catalogs. We visit mills in Portugal, Turkey, and India—feeling the hand of the fabric, asking about the cotton's origin, the water used, the wages paid. We reject 80% of what we touch. Only fibers that breathe, age beautifully, and honor the people who made them earn a place in our collection.</p>
+                    <p>We don't order from catalogs. We visit mills in Portugal, Turkey, and India—feeling the hand of
+                        the fabric, asking about the cotton's origin, the water used, the wages paid. We reject 80% of
+                        what we touch. Only fibers that breathe, age beautifully, and honor the people who made them
+                        earn a place in our collection.</p>
                 </article>
                 <article class="craft-card reveal" style="--delay: .12s">
                     <div class="craft-icon" aria-hidden="true">
@@ -265,7 +302,10 @@
                         </svg>
                     </div>
                     <h3>2. Pattern for real bodies</h3>
-                    <p>Standard patterns are drafted for a mythical average. Ours go through 12+ iterations—tested on different heights, postures, movement patterns. We adjust grain lines so fabric doesn't twist. We balance proportions so the shoulder sits right whether you're 5'4" or 6'2". The fit isn't "standard." It's considered.</p>
+                    <p>Standard patterns are drafted for a mythical average. Ours go through 12+ iterations—tested on
+                        different heights, postures, movement patterns. We adjust grain lines so fabric doesn't twist.
+                        We balance proportions so the shoulder sits right whether you're 5'4" or 6'2". The fit isn't
+                        "standard." It's considered.</p>
                 </article>
                 <article class="craft-card reveal" style="--delay: .24s">
                     <div class="craft-icon" aria-hidden="true">
@@ -274,7 +314,10 @@
                         </svg>
                     </div>
                     <h3>3. Finish so it stays finished</h3>
-                    <p>Bound seams (not serged) that lie flat against skin. Buttons cross-stitched with a shank so they never pop. Stress points bar-tacked. Hem allowances generous enough to let out. These are the details that separate "looks good new" from "looks good in five years." We build for the latter.</p>
+                    <p>Bound seams (not serged) that lie flat against skin. Buttons cross-stitched with a shank so they
+                        never pop. Stress points bar-tacked. Hem allowances generous enough to let out. These are the
+                        details that separate "looks good new" from "looks good in five years." We build for the latter.
+                    </p>
                 </article>
             </div>
         </section>
@@ -292,14 +335,17 @@
                     The average garment is worn just 7 times before it's discarded. That's not a wardrobe—that's waste.
                 </p>
                 <p style="margin-top: 1.5rem; color: var(--ink-soft);">
-                    We asked a different question: <strong>What if you only owned clothes you genuinely wanted to wear every day?</strong>
-                    Not for an occasion. Not for a season. For your actual life—the commute, the kitchen, the long meeting,
+                    We asked a different question: <strong>What if you only owned clothes you genuinely wanted to wear
+                        every day?</strong>
+                    Not for an occasion. Not for a season. For your actual life—the commute, the kitchen, the long
+                    meeting,
                     the weekend walk, the years in between.
                 </p>
                 <p style="margin-top: 1.5rem; color: var(--ink-soft);">
                     So we built a brand around a radical idea: <strong>fewer pieces, each one earned its place.</strong>
                     No seasonal drops. No "new arrivals" every week. Just a tight edit of essentials made from fabrics
-                    that improve with age, cut for movement, finished to last. Clothing that doesn't just survive your life—
+                    that improve with age, cut for movement, finished to last. Clothing that doesn't just survive your
+                    life—
                     it gets better because of it.
                 </p>
                 <p style="margin-top: 1.5rem; color: var(--ink-soft);">
@@ -314,9 +360,11 @@
                 <div>
                     <p class="eyebrow stitched">Get in touch</p>
                     <h2>Real humans. Real answers. No bots.</h2>
-                    <p>Have a question about fit? Want to know if our linen shirt works for your broad shoulders? Curious why our cotton feels different? We love talking about this stuff.</p>
+                    <p>Have a question about fit? Want to know if our linen shirt works for your broad shoulders?
+                        Curious why our cotton feels different? We love talking about this stuff.</p>
                     <p style="margin-top: 1rem; color: var(--ink-soft);">
-                        <strong>We respond within 24 hours on weekdays.</strong> No ticket numbers. No "we'll get back to you." Just a real person who knows the product.
+                        <strong>We respond within 24 hours on weekdays.</strong> No ticket numbers. No "we'll get back
+                        to you." Just a real person who knows the product.
                     </p>
                     <ul style="margin-top: 1.5rem; padding-left: 1.5rem; color: var(--ink-soft); line-height: 2;">
                         <li><strong>Sizing & fit</strong> — "I'm between sizes, which way should I go?"</li>
@@ -327,8 +375,10 @@
                     </ul>
                 </div>
                 <!-- Google Form Embed -->
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScHPmjXS7Ia9SeOVeWPxTsnwzN9ZJ42qByW0fWSzCi3L0st2w/viewform?embedded=true" title="Viralaya Contact Form" aria-label="Contact form"
-                    width="100%" height="890" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLScHPmjXS7Ia9SeOVeWPxTsnwzN9ZJ42qByW0fWSzCi3L0st2w/viewform?embedded=true"
+                    title="Viralaya Contact Form" aria-label="Contact form" width="100%" height="890" frameborder="0"
+                    marginheight="0" marginwidth="0">Loading...</iframe>
             </div>
         </section>
     </main>
