@@ -9,11 +9,13 @@
   --thread: #8a7a5c;
   --thread-soft: #b3a68c;
   --ink: #2b241c;
+  --ink-rgb: 43, 36, 28;
   --ink-soft: #5c5244;
   --clay: #b4552d;
   --clay-deep: #93401f;
   --sage: #7d8a6a;
   --cream: #fbf8f1;
+  --cream-rgb: 251, 248, 241;
   --shadow: 0 18px 40px rgba(43, 36, 28, 0.12);
   --radius: 18px;
   --font-display: "Cormorant Garamond", Georgia, serif;
@@ -32,11 +34,13 @@ body.dark-theme {
   --thread: #d0b992;
   --thread-soft: #bda47b;
   --ink: #f4efe6;
+  --ink-rgb: 244, 239, 230;
   --ink-soft: #d9d3ca;
   --clay: #e28d62;
   --clay-deep: #cf7348;
   --sage: #b2c09a;
   --cream: #1d1a17;
+  --cream-rgb: 29, 26, 23;
   --shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
   --header-bg: rgba(23, 22, 19, 0.78);
   --nav-bg: #201d1a;
@@ -706,21 +710,105 @@ body.nav-open .menu-toggle span:nth-child(3) {
   transform: rotate(-1deg);
 }
 
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: clamp(12px, 2vw, 24px);
+/* Photo slider inside swatch s4 - centered */
+.photo-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   width: 100%;
   height: 100%;
 }
 
-.image-grid img {
+.photo-item {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 4px;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.photo-item img.loaded {
+  opacity: 1;
+}
+
+/* Pagination indicators */
+.slider-pagination {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.pagination-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Navigation buttons inside the photo slider — grey circle, black arrow */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(138, 122, 92, 0.3);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.slider-nav.prev { left: 12px; }
+.slider-nav.next { right: 12px; }
+
+.slider-nav:hover {
+  background: rgba(138, 122, 92, 0.5);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-nav:active {
+  background: rgba(138, 122, 92, 0.7);
+  transform: translateY(-50%) scale(0.95);
 }
 
 /* Tailor's pin on the top swatch */
@@ -745,62 +833,6 @@ body.nav-open .menu-toggle span:nth-child(3) {
   background: linear-gradient(180deg, #c98a3d, rgba(201, 138, 61, 0.2));
   transform: translate(-50%, -50%) rotate(35deg);
   transform-origin: top;
-}
-
-/* Photo slider in swatch s3 */
-.photo-slider {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  padding: clamp(16px, 2.5vw, 32px);
-}
-
-.photo-track {
-  display: flex;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.photo-item {
-  position: relative;
-  min-width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-}
-
-.photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.photo-item img.loaded {
-  opacity: 1;
-}
-
-.photo-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--linen-deep);
-  z-index: 1;
-  animation: shimmer 1.5s infinite;
-  transition: opacity 0.3s ease;
-}
-
-@keyframes shimmer {
-  0% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.4; }
-}
-
-.photo-item.loaded::before {
-  opacity: 0;
-  pointer-events: none;
 }
 
 /* Festival image loading */
@@ -835,36 +867,11 @@ body.nav-open .menu-toggle span:nth-child(3) {
   display: block;
 }
 
-.slider-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(4px);
-  cursor: pointer;
+/* Center the photo slider in the swatch */
+.photo-slider {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: var(--ink);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: background 0.2s, transform 0.2s;
-}
-
-.slider-nav:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-50%) scale(1.05);
-}
-
-.slider-nav.prev { left: 16px; }
-.slider-nav.next { right: 16px; }
-
-.slider-nav:active {
-  transform: translateY(-50%) scale(0.95);
 }
 
 /* Hero wave divider */
@@ -1229,11 +1236,11 @@ section {
 }
 
 /* ============================================================
-   Newsletter
+   Newsletter (Contact) — Linen Deep background
    ============================================================ */
 .newsletter {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--linen-deep);
+  color: var(--ink);
   border-top: 2px dashed var(--thread-soft);
 }
 
@@ -1247,11 +1254,11 @@ section {
 }
 
 .newsletter .eyebrow {
-  color: #e8a87c;
+  color: var(--clay);
 }
 
 .newsletter h2 {
-  color: var(--cream);
+  color: var(--ink);
 }
 
 .newsletter form {
@@ -1265,21 +1272,49 @@ section {
   padding: 15px 18px;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: var(--cream);
-  background: rgba(251, 248, 241, 0.08);
-  border: 1.5px dashed rgba(251, 248, 241, 0.4);
+  color: var(--ink);
+  background: var(--cream);
+  border: 1.5px dashed var(--thread);
   border-radius: 4px;
   outline: none;
   transition: border-color 0.3s, background 0.3s;
 }
 
 .newsletter input::placeholder {
-  color: rgba(251, 248, 241, 0.55);
+  color: var(--ink-soft);
 }
 
 .newsletter input:focus {
-  border-color: #e8a87c;
-  background: rgba(251, 248, 241, 0.14);
+  border-color: var(--clay);
+  background: var(--linen);
+}
+
+body.dark-theme .newsletter {
+  background: var(--linen-dark);
+  color: var(--ink);
+}
+
+body.dark-theme .newsletter .eyebrow {
+  color: var(--clay);
+}
+
+body.dark-theme .newsletter h2 {
+  color: var(--ink);
+}
+
+body.dark-theme .newsletter input {
+  color: var(--ink);
+  background: var(--linen);
+  border-color: var(--thread-soft);
+}
+
+body.dark-theme .newsletter input::placeholder {
+  color: var(--ink-soft);
+}
+
+body.dark-theme .newsletter input:focus {
+  border-color: var(--clay);
+  background: var(--linen-deep);
 }
 
 /* ============================================================
@@ -1289,9 +1324,30 @@ footer {
   position: relative;
   text-align: center;
   padding: 40px 20px 50px;
-  background: var(--ink);
-  color: rgba(251, 248, 241, 0.7);
+  background: #1a1612;
+  color: var(--cream);
   font-size: 0.9rem;
+}
+
+footer p:first-child {
+  color: var(--cream);
+}
+
+footer p:last-child {
+  color: rgba(var(--cream-rgb, 251, 248, 241), 0.6);
+}
+
+body.dark-theme footer {
+  background: #f4efe6;
+  color: #1a1612;
+}
+
+body.dark-theme footer p:first-child {
+  color: #1a1612;
+}
+
+body.dark-theme footer p:last-child {
+  color: rgba(26, 22, 18, 0.6);
 }
 
 .footer-stitch {

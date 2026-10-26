@@ -161,6 +161,7 @@ if (photoSlider) {
   const prevBtn = photoSlider.querySelector('.slider-nav.prev');
   const nextBtn = photoSlider.querySelector('.slider-nav.next');
   const items = track.querySelectorAll('.photo-item');
+  const paginationBtns = photoSlider.querySelectorAll('.pagination-btn');
 
   let currentIndex = 0;
   const totalItems = items.length;
@@ -168,6 +169,12 @@ if (photoSlider) {
   function updateSlider() {
     const offset = -currentIndex * 100;
     track.style.transform = `translateX(${offset}%)`;
+
+    // Update pagination buttons
+    paginationBtns.forEach((btn, index) => {
+      btn.classList.toggle('active', index === currentIndex);
+      btn.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
+    });
   }
 
   // Handle image loading for slider
@@ -203,6 +210,14 @@ if (photoSlider) {
       updateSlider();
     });
   }
+
+  // Pagination button clicks
+  paginationBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      currentIndex = index;
+      updateSlider();
+    });
+  });
 
   // Add keyboard navigation
   document.addEventListener('keydown', (e) => {
